@@ -1,0 +1,36 @@
+Title,Performance of deep learning in prediction of stock market volatility
+Authors,"Kyoung-Sook Moon, Hongjoon Kim"
+Year,2019
+Journal,Economic Computation and Economic Cybernetics Studies and Research
+Aim,To apply LSTM deep learning algorithm to financial market in order to predict the trend of values of stock indices and their volatilities
+Main methods,LSTM
+Benchmark methods,na
+Method overview,"Technical indicators: MA, EMA, momentum (M = S_t - S_[t-m]), hybrid momentum (HM = S_t - MA(S_[t-m],p)). Given this, the LSTM takes in 3 sets of inputs, and outputs 3 sets of outputs. In addition to one step ahead forecasting of volatility, I think they also do directional prediction"
+Method complexity,na
+Volatility definition,Standard deviation of the underlying asset prices
+Data summary,"S&P500, NASDAQ, German DAX, Korean KOSPI200, Mexico IPCover. High, low, open, close, volume, for a 7 year period from Apr 1 2010 to Dec 30 2016."
+System in,"1: volatility 6: volatility, open, high, low, volume, returns. 12: the previous with MA(m1), MA(m2), MA(m3), EMA(m1), EMA(m2), EMA(m3)"
+System out,"Volatility OR momentum OR hybrid momentum, as regression or classification (direction)"
+Results summary,"The true positive rates do not seem to be dependent upon the number of features and the classification with only 1 feature results in better rates than with 6 or 12 in some cases. Predictions based on momentum and hybrid momentum have lower errors that value of mean averages, and 1 input feature was generally best"
+Performance metric,"MSE, MAPE. Also true positive rate"
+Evaluation method,Training data partition into K equal sized buckets based on the quantities in each interval
+Open source?,na
+Code language?,na
+Interesting notes,"This paper also tries to predict stock price itself. In this case, everything above is replaced, from volatility to stock price"
+"Subjective quality (bad, okay, good)",Bad. Doesn't even use variance of return series as volatility. Is hard to follow
+Insights/my takeaway,
+VD,Historical volatility (of stock price)
+MT,Pure
+NT,RNN (LSTM)
+HT,na
+PT,na
+EA,na
+pEA,na
+IN,
+IS,"Single asset, univariate (volatility), multivariate (volatility, open, high, low, volume, returns, MA(m1), MA(m2), MA(m3), EMA(m1), EMA(m2), EMA(m3))"
+IW,all (unsure)
+OW,unsure
+SFP,unsure
+EM,"MSE, MAPE, TPR"
+ref,"Moon, 2019 \cite{moon_performance_2019}"
+PO,"S&P500, NASDAQ, DAX, KOSPI200, IPC"

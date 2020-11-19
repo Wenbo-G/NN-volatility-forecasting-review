@@ -1,1 +1,2 @@
-Hello
+#This is the open source shared repo for the paper titled: Neural network-based financial volatility forecasting: A systematic review
+Authored by: Wenbo Ge, Pooia Lalbakhsh, Leigh Isai, Artem Lenskiy, Hanna Suominen

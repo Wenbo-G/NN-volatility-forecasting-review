@@ -1,0 +1,37 @@
+Title,Forecasting volatility with a stacked model based on a hybridized artificial neural network
+Authors,"Eduardo Ramos-Perez, Pablo J. Alonso-Gonzalez, Jose Javier Nunez-Velazquez"
+Year,2019
+Journal,Expert Systems with Applications
+Aim,To build a more flexible model
+Main methods,Stacked ANN
+Benchmark methods,"ANN, ANN-GARCH, ANN-EGARCH, Heston model"
+Method overview,"Several methods used to optimise stacked ANN parameters: MMSE, CBB, SB, MEB, HCV. Which one to use is found through grid search tested against 50% of the data. The stacked ANN uses RF, Gradient Boosting trees (GB), and SVMs."
+Method complexity,"2 hidden layers, 20 and 10 neurons"
+Volatility definition,"True realised volatility, i.e., standard deviation of log returns with a time window of 5"
+Data summary,"S&P volatilies observed in 7 year periods starting in: 2000,2001,2002,2009,2010. So from 2000 to 2018"
+System in,"Last 30 volatilies computed with returns observed in the market, scaled [0,1], along with forecasts from the RF, GB, SVMs. The RF, GB, and SVM is given the last 30 volatilies too as prediction"
+System out,"I think, next step ahead volatility forecast, i.e. volatility for the next 5 days"
+Results summary,"Regardless of period, the Stacked ANN outperforms hybrid models based on autoregressive methods, like ANN-GARCH and ANN-EGARCH. Stacked ANN with student t distribution is the only model that produces appropriate p-values for the VaR and Cvar tests"
+Performance metric,"VaR and CVaR, along with 4 tests for these"
+Evaluation method,"25% to fit first level algorithms, 50% to ANN estimate, 25% test set, and the following year as out of sample forecasting. The models were trained and test 5 times, with S&P500 volatilies observed in 7 year periods starting in: 2000,2001,2002,2009,2010. The year after the 7th year was out of sample testing, i.e., 2008, 2009, etc..."
+Open source?,na
+Code language?,R
+Interesting notes,"It has been suggested (with reference) to use one day lagged inputs for NNs
+They mention that they used out of sample error to choose best model, but I think that is misphrased and they mean to say the 50% of data used"
+"Subjective quality (bad, okay, good)","Okay. Stacked ANN isn't really a thing, and uses VaR"
+Insights/my takeaway,
+VD,Historical volatility
+MT,Pure
+NT,MLP (stacked ANN)
+HT,na
+PT,na
+EA,na
+pEA,na
+IN,
+IS,"Single asset, multivariate (volatility (n=5), RF outputs, SVM outputs, GB outputs)"
+IW,30
+OW,1 - 5
+SFP,TRUE
+EM,4 different VaR and CVaR tests
+ref,"Ramos-Perez, 2019 \cite{ramos-perez_forecasting_2019}"
+PO,S&P500

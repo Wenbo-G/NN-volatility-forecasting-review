@@ -1,0 +1,40 @@
+Title,A variational mode decomposition approach for analysis and forecasting of economic and financial time series
+Authors,Salim Lahmiri
+Year,2016
+Journal,Expert Systems with Applications
+Aim,"To explore the usefulness of the VMD in extracting economic and financial time series features for prediction. Particularly, to compare EMD and VMD"
+Main methods,VMD in combination with general regression NN (GRNN)
+Benchmark methods,"EMD with GRNN, feedforward NN (trained on past 5 observations) and ARMA"
+Method overview,"VMD requires parameter k number of decompositions. This was defined as the number of IMFs obtained from EMD, then in the range of +-3"
+Method complexity,"4 layers, though its hard to compare as its not well defined"
+Volatility definition,VIX
+Data summary,CBOE NASDAQ100 volatility index (VIX) daily data from 2nd Jan 2008 to 16th Dec 2013
+System in,"Intrinsic mode functions (IMF) of price signal (I think, no mention of normalisation etc...)"
+System out,"VIX value. Note that although this doesn't predict volatility of some asset, it predicts VIX, which I thought was good enough"
+Results summary,VMD-GRNN with all values of k outperforms every benchmark for all metrics
+Performance metric,"MAE, MAPE, RMSE"
+Evaluation method,"80% of samples for training, other 20% for testing"
+Open source?,na
+Code language?,na
+Interesting notes,"EMD can represent nonlinear nonstationary signals without the need of a basis function (like Fourier or Wavelet) and is therefore data driven and self adaptive
+Variational EMD (VMD) was introduced as EMD lacked exact mathematical modelling, was sensitive to noise and sampling and interpolation choice
+Apparently feedforward NN trained on past 5 observations works"
+"Subjective quality (bad, okay, good)","Okay, although it predicts VIX, the methods are interesting and could be useful for later work"
+Insights/my takeaway,"EMD can represent nonlinear nonstationary signals without the need of a basis function (like Fourier or Wavelet) and is therefore data driven and self adaptive
+Variational EMD (VMD) was introduced as EMD lacked exact mathematical modelling, was sensitive to noise and sampling and interpolation choice
+Apparently feedforward NN trained on past 5 observations works"
+VD,Implied volatility
+MT,Pure
+NT,MLP (General regression NN)
+HT,na
+PT,VMD
+EA,na
+pEA,na
+IN,
+IS,"Single asset, multivariate (VMD decomposed VIX)"
+IW,unsure
+OW,unsure
+SFP,TRUE
+EM,"MAE, MAPE, RMSE"
+ref,"Lahmiri, 2016 \cite{lahmiri_variational_2016}"
+PO,VIX

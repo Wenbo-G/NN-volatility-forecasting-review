@@ -1,0 +1,39 @@
+Title,Computational intelligence approach to capturing the implied volatility
+Authors,"Fahed Mostafa, Tharam Dillon, Elizabeth Chang"
+Year,2015
+Journal,International Conference on Artificial Intelligence in Theory and Practice
+Aim,Demonstrate the capabilities of NN in learning implied volatility surface through time and its impact on option pricing
+Main methods,"Nniv, an ANN that predicts implied volatility into the BS to create option price"
+Benchmark methods,GOPM and BSOPM
+Method overview,"The ANN outputs implied volatility, which is put into black scholes forumla to get an option price (Nniv), this is trained on 20 days prev day, validated on 5 days prev, tested on 1 day future. 50 of these models were trained, and the lowest error one was used. Parameters of GOPM and BSOPM were estimated on a daily basis. Network training was terminated when validation error increased"
+Method complexity,na
+Volatility definition,BS implied volatility
+Data summary,"European call options on FTSE100 from 2nd Jan 2000 to 31st Dec 2001, making 63094 call options and daily index values (adjsuted for dividends). Some filters were applied on moneyness, maturity, and close prices, resulting in 26533 options. GB Libor rates were the risk free rate. "
+System in,"Moneyness (index/strike), time to expiry, and historical volatility"
+System out,"Implied volatiltiy, target was BSOPM implied volatility. The predicted implied volatility would be plugged into the Black Scholes formula to produce an option price"
+Results summary,"On average, Nniv and GOPM performance increases with maturity, with Nniv slightly better. The Rsquared and F test show Nniv and GOPM are similar. Overall, Nniv has superior out of sample pricing, and could predict better further into the future"
+Performance metric,ARPE. Also a regression analysis on moneyness and time to expiry 
+Evaluation method,"In sample set was 20 days, validation set was 5 days, output sample was 1 day. Error with respect to euro option pricing"
+Open source?,na
+Code language?,na
+Interesting notes,"There is also a GARCH option pricing model (GOPM) on top of BSOPM
+Performance gains have been seen when the training set is partitioned by moneyness and different neural networks are used for each
+Many previous studies have shown that implied volatility contains measurement errors and is inefficient forecast of volatility, however recent research has shown that implied volatility subsumes all information contained in the historical volatility and is capable of providing an accurate forecast of future volatility (with references)
+The forecasted volatility also exhibits volatility smile, however short maturity has higher implied volatility, and long maturities become more linear"
+"Subjective quality (bad, okay, good)","Bad, nothing special about it. It also is mainly for option pricing"
+Insights/my takeaway,
+VD,Implied volatility
+MT,Pure
+NT,MLP
+HT,na
+PT,na
+EA,na
+pEA,na
+IN,
+IS,"Single asset, multivariate (moneyness (index and strike), time to expiry, historical volatility)"
+IW,1
+OW,1
+SFP,TRUE
+EM,ARPE
+ref,"Mostafa, 2015 \cite{dillon_computational_2015}"
+PO,FTSE100

@@ -1,0 +1,37 @@
+Title,Forecasting of financial data: a novel fuzzy logic neural network based on error-correction concept and statistics
+Authors,Dusan Marcek
+Year,2018
+Journal,Complex & Intelligent Systems
+Aim,To investigate the effect of good and bad news of volatility in the Hungary stock market. To examine whether potentially nonlinear neural networks out perform latest statistical methods
+Main methods,Gaussian activation function radial basis function neural network with error correct mechanism (GRBFNN)
+Benchmark methods,"SVR, ARIMA (1,1,0), EGARCH(1,1) GED, soft GRBFNN"
+Method overview,"First, statistical methods (GARCH, PGARCH, EGARCH) were compared to find the best ones based on AIC, LL, and which error distribution through Generalized errors distribution (GED)"
+Method complexity,"1 hidden layer, 3 to 10 hidden neurons, with I think k=p+q inputs, where p and q = 1, so k = 2?"
+Volatility definition,"I think historical volatility on logged returns, i.e., standard deviation of logged price differences"
+Data summary,"BUX stocks for Jan 7th 2004 to Dec 21 2012 (2256 observations), converted to log return series"
+System in,"Unsure, but I think past two log returns (k=p+q=2)"
+System out,I guess next day volatility prediction
+Results summary,"GRBFNN with error correction was best, followed by SVR then soft GRBFNN"
+Performance metric,"MAPE, RMSE"
+Evaluation method,"Pre GFC was training set (Jan 2004 to Jun 2007), and post GFC was test set (Jul 2007 to Dec 2012). Results of the best configuration was stated"
+Open source?,na
+Code language?,na
+Interesting notes,"The time series was nonstationary, but the return series was
+The thought of this proposal is based on the economic theory of the co-integrated variables which are related to an error-correction model. The simple mean equation (1) can be interpreted as long-run relationship that hold among the k = p + q input variables to y when the system is in equilibrium"
+"Subjective quality (bad, okay, good)","Bad, so many missing details in implementation"
+Insights/my takeaway,
+VD,Historical volatility (unsure)
+MT,Pure
+NT,MLP (Gaussian RBF)
+HT,na
+PT,na
+EA,na
+pEA,na
+IN,
+IS,"Single asset, univariate (log returns)"
+IW,2
+OW,1 - unsure
+SFP,unsure
+EM,"MAPE, RMSE"
+ref,"Marcek, 2018 \cite{marcek_forecasting_2018}"
+PO,BUX

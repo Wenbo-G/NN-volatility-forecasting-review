@@ -1,0 +1,37 @@
+Title,Application of ANFIS-based CARRX model to stock volatility forecasting
+Authors,"Liyan Geng, Zhanfu Zhang"
+Year,2016
+Journal,"International Journal of Simulation: Systems, Science and Technology"
+Aim,To enhance the forecasting performance of CARRX models by combining with aANFIS
+Main methods,"ANFIS combined with CARRX(1,1)"
+Benchmark methods,"ANN vased CARRX, LSSVM based CARRX, and CARRX"
+Method overview,"Conditional autoregressive range model with exogenous variables (CARRX) integrates range into the GARCH model and measures volatility by using range directly. CARRX assumes exponential distribution of data, but this may not be the case. ANFIS approximates a different distribution for nonparametric CARRX(p,q). p,q estimated through (Akaike) AIC and (Schwartz) SC criteria. ANFIS membership functions with bell shaped and trapezoidal"
+Method complexity,The 5 layers in ANFIS
+Volatility definition,Range based volatility for a given day as an approximation of volatility in that day (I think)
+Data summary,"Daily trading price of HS300 (732 days) and HIS (744 days) from 4th Jul 2011 to 10th Jul 2014, including open, close, high, low, volume. Intraday range = log(high) - log(low)"
+System in,"Log asset price range (log(high) - log(low)) and conditional mean of the range, measured as the moving average of 5 most recent ranges. [0,1] normalisation. And exogenous variables. Everything is lagged up to q (= 1)"
+System out,"Range volatility, transformed into the original range volatility series (I think because the output is normalised)"
+Results summary,"ANFIS-CARRX performs best, except for MAE for both data sets, where it ties with other hybrid CARRX models. ANFIS-CARRX also provides largest R2 "
+Performance metric,"RMSE, MAE, HRMSE, HMAE, LL, LINEX. R2 from the M-Z test also used"
+Evaluation method,"First 500 samples for both for training, remaining for testing."
+Open source?,na
+Code language?,na
+Interesting notes,"Classic volatility models (GARCH type ones) are return based and measure volatility by using squared returns. However, range based voaltility proxies have been shown to be much more efficient [Parkinson 1980]
+Some have shown CARRX models outperform GARCH type models"
+"Subjective quality (bad, okay, good)",Okay
+Insights/my takeaway,
+VD,Other (range based)
+MT,Hybrid
+NT,MLP (ANFIS)
+HT,"Fuzzy, GARCH (CARRX)"
+PT,na
+EA,na
+pEA,na
+IN,
+IS,"Single asset, multivariate (log asset price, conditional range, log return, volume)"
+IW,1
+OW,1
+SFP,TRUE
+EM,"RMSE, MAE, HRMSE, HMAE, LL, LINEX, R2 (M-Z)"
+ref,"Geng, 2016 \cite{geng_application_2016}"
+PO,"CSI300, HSI"

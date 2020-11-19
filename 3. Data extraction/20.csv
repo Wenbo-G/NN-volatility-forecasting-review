@@ -1,0 +1,37 @@
+Title,Forecasting the volatility of stock price index: a hybrid model integrating LSTM with multiple GARCH-type models
+Authors,"Ha Young Kim, Chang Hyun Won"
+Year,2018
+Journal,Expert Systems with Applications
+Aim,"Proposes a hybrid LSTM model with multiple GARCH type models: EWMA, GARCH, and EGARCH"
+Main methods,GEW-LSTM
+Benchmark methods,"GARCH, EGARCH, EWMA, as singles and combined with LSTM and deep FNN, and single, double hybrids of them"
+Method overview,"ARCH type models compared, then single hybrids, then double hybrids, then compared to the proposed triple hybrid"
+Method complexity,"DFN with 3 hidden layers 10-5-1, and LSTMs with 5 hidden layers 10-4-2-5-1"
+Volatility definition,Historical volatility of log returns. Standard deviation of log price differences over a given window of time
+Data summary,"KOSPI200: training: 2665 data points from Jan 1 2001 to Sept 30 2011, and testing: 1298 points until Jan 2 2017. Also 3 year Korea Treasury Bond interest rate, 3 year AA grade corporate bond, daily close price of Gold and Crude Oil, all for the same period. Everything converted to return series by taking log differences"
+System in,"Previous 22 trading days of explanatory variables: KOSPI200 index, KOSPI200index log difference return rate, time of KOSPI200 index log difference return rate at -1 time, 3 year KTB interest rate, interest rate for 3 year AA grade CB, price of crude oil and gold. As well as parameters from the GARCH, EGARCH. EWMA models for the previous 22 trading days"
+System out,Next day ahead volatility prediction
+Results summary,"GEW-LSTM performs best in all cases, for all metrics, for all time windows, for all days ahead"
+Performance metric,"MAE, MSE, HMAE, HMSE. Also Wilcoxon signed rank test and Diebold Mariano test"
+Evaluation method,"20% of training set was used as validation for NN models. 1 day ahead prediction. Additionally, 14 and 21 day ahead prediction made. Additionally, 7 and 15 day lagged inputs (window) used."
+Open source?,na
+Code language?,na
+Interesting notes,"Volatility clustering is the phenomenon where high volatility is maintained to some extent, and low volatility is maintained to some extent (Mandelbrot 1967)
+Provides a good history of realised volatility and how it came about"
+"Subjective quality (bad, okay, good)",Good
+Insights/my takeaway,"This paper does a good summary statistics of the data, I should do something similar to them"
+VD,Historical volatility
+MT,Hybrid
+NT,RNN (LSTM)
+HT,"GARCH, EWMA"
+PT,na
+EA,na
+pEA,na
+IN,"3y Korea Treasury Bond, 3y AA grade corporate bond, gold, crude oil"
+IS,"Multi-asset, multivariate (KOSPI price, KOSPI log return, KOSPI differential rate of return at -1 time, 3y KTB interest rate, 3y AA grade corporate bonds interest rate, crude oil price, gold price, parameters estimated from GARCH, parameters estimated from EGARCH, parameters estimated from EWMA)"
+IW,all (22)
+OW,1 - unsure
+SFP,TRUE
+EM,"MAE, MSE, HMAE, HMSE, Wilcoxon signed rank test, Diebold Mariano test"
+ref,"Kim, 2018 \cite{kim_forecasting_2018}"
+PO,KOSPI200

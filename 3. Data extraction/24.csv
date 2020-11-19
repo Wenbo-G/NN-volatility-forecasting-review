@@ -1,0 +1,36 @@
+Title,Gold price volatility: a forecasting approach using the artificial neural network-GARCH model
+Authors,"Werner Kristjanpoller, Marcel C. Minutolo"
+Year,2015
+Journal,Expert Systems with Applications
+Aim,Employs an ANN-GARCH model to forecast volatility beyond the sample period to the out of sample population thereby improving current knowledge and abilities
+Main methods,ANN-GARCH
+Benchmark methods,GARCH
+Method overview,"The output of the GARCH (1,1) model with a moving window length of 252 days, with an autoregressive model of order 1 used for the mean equation is used as input to the ANN, along with the square gold price returns. In addition to this, the model could also take [Daily variations of EUR and YEN exchange rates, returns of DJI and FTSE, and daily price variation of oil]. These extra variables were introduced iteratively in different orders to test robustness. The maximum daily predicted change was bounded to 10%, i.e., maximum volatility change oculd be 1.1 times or 0.9 times. A change in GARCH horizon from 252 to 504 days was also done to test robustness"
+Method complexity,"3 layers, 5 neurons per layer"
+Volatility definition,Sample variance of log returns in a 21 day window 
+Data summary,"Gold spot price from Sept 6th 1999 to March 20 2014 (3836 observations), and gold futures price from Sept 6th 1999 to April 15 2014 (3665 observations)"
+System in,"Daily variations of EUR and YEN exchange rates, returns of DJI and FTSE, and daily price variation of oil, as well as forecasts from the GARCH(1,1) model with moving window length of 252 days, and square of gold price returns"
+System out,The next 21 day realised volatility forecast (also 14 and 28 days) of gold spot price and gold futures price
+Results summary,"All combinations are better than GARCH, the exact ,model varies for different forecast windows, but ANN-GARCH seems to outperform GARCH in all aspects, regardless of window or horizon"
+Performance metric,"MSE, RMSE, MAE, MAPE"
+Evaluation method,"Unspecified, but it mentions that there were 3383 forecasts for spot price volatility, and 3188 forecasts for futures price volatility, implying roughly 2 years worth of training data and everything else was test? Unsure if re-training occurs"
+Open source?,na
+Code language?,na
+Interesting notes,
+"Subjective quality (bad, okay, good)","Okay, same as other paper by the same person. The only differences is this is gold price, and the other is oil price. If I want to do anything with this, just use the other one"
+Insights/my takeaway,
+VD,Historical volatility
+MT,Hybrid
+NT,MLP
+HT,GARCH
+PT,na
+EA,na
+pEA,na
+IN,"DJIA, EUR exchange rate, FTSE100, JPY exchange rate, oil"
+IS,"Multi-asset, multivariate (GARCH predictions, square log returns, DJIA log returns, EUR exchange rate variation, FTSE log returns, JPY exchange rate variation, daily price variation of oil)"
+IW,252
+OW,"1 - 14, 1 - 21, 1 - 28"
+SFP,TRUE
+EM,"MSE, RMSE, MAE, MAPE"
+ref,"Kristjanpoller, 2015 \cite{kristjanpoller_gold_2015}"
+PO,Gold (spot and futures)

@@ -1,0 +1,39 @@
+Title,Exploring the predictability of range based volatility estimators using recurrent neural networks
+Authors,"Gabor Petnehazi, Jozsef Gall"
+Year,2019
+Journal,"Intelligent Systems in Accounting, Finance and Management"
+Aim,"To compare various range based volatility estimators according to their predictability, but predicting daily direction as well as value"
+Main methods,LSTM RNN
+Benchmark methods,none
+Method overview,"To predict direction, the values of the prediction were dropped, keeping a range between 0 to 1, for up or down. Each constituent of the index had a model trained for it. The model was modified so that the threshold of direction was 0.45 instead of 0.5. Then, a range of +-0.05 of threshold was allowed for the model to not guess, i.e., make no prediction for things it is unsure on. Then, the model predicted values instead of directions, and then modifications were made to the proxies (i.e., dividend adjustments)"
+Method complexity,2 layer LSTM with 10 hidden units each layer
+Volatility definition,"Standard deviation of logged return differences (close to close). But also Parkinson, Garman Klass, Rogers, Yang. All volatilities calculated over a window of 21 days"
+Data summary,1st Jan 2008 to 31st Dec 2017 of daily open high low close of all constituents of Dow Jones index.
+System in,"10 daays volatility direction unrolled, fed in batches of 32"
+System out,Next day volatility direction prediction for given proxy
+Results summary,"For all directional predictions, the close to close performed nearly random, and all over proxies beat this. With the adjusted close to close proxy, it beat other proxies for both direction and value prediction. Overall, close to close was worst without adjustments, then with adjustments there were no difference between proxies"
+Performance metric,"Accuracy, precision, recall, F1. Then RMSE and SMAPE for value prediction"
+Evaluation method,"70% for training, 30% testing, 1 day ahead forecasts. Performance averaged over all 30 constituents of the Dow Jones index"
+Open source?,na
+Code language?,"Keras, python"
+Interesting notes,"Volatility quantifies the dispersion of returns, and is not directly observable and therefore needs to be estimated 
+People have used 5 minute returns and reported daily variances significantly fluctuate over time and distributions are extremely right skewed, whereas log standard deviation approximates a normal distribution. 
+Stylised facts of volatility: Persistence, Mean reversion, Asymmetric impacts of innovations, influences of exogenous variables
+It should be explored whether a general volatility forecasting network could learn from the price series history of different assets. Sirignano and Cont 2018 found universal features of price formation that suggest it was possible"
+"Subjective quality (bad, okay, good)",Good. Useful results in comparison of volatility proxies
+Insights/my takeaway,
+VD,"Historical volatility, other (range based)"
+MT,Pure
+NT,RNN (LSTM)
+HT,na
+PT,na
+EA,na
+pEA,na
+IN,
+IS,"Single asset, univariate (volatility proxy)"
+IW,all (10)
+OW,1 - 21
+SFP,TRUE
+EM,"accuracy, precision, recall, F1, RMSE, SMAPE"
+ref,"Petnehazi, 2019 \cite{petnehazi_exploring_2019}"
+PO,DJIA (all constituents)

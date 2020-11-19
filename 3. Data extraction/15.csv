@@ -1,0 +1,36 @@
+Title,Exploiting the low risk anomaly using machine learning to enhance the Black Litterman framework: evidence from south Korea
+Authors,"Sujin Pyo, Jaewook Lee"
+Year,2018
+Journal,Pacfic-Basin Finance Journal
+Aim,Select from 3 models to predict volatility to construct a black litterman portfolio and compare with the CAPM portfolio
+Main methods,"Gaussian process regression, support vector regression, ANN, GARCH"
+Benchmark methods,Average of previous squared returns over past 60 days
+Method overview,"KOSPI200, 60 monthly volatilies for 5 years as training data, and predicted one volatility next month using 10 past monthly volatilities as inputs. The period of investment is 2005 to 2016"
+Method complexity,na
+Volatility definition,"undefined, but probably just realised volatility, i.e., standard deviation"
+Data summary,"60 monthly volatilies for 5 years as training data, and predicted one volatility next month using 10 past monthly volatilities as inputs"
+System in,10 past monthly volatilities
+System out,realised volatility for next month
+Results summary,"SVR and ANN better than GARCH, GPR was worst. ANN showed a similar average to benchmark, but was more stable. Therefore ANN is best"
+Performance metric,"MAPE, MAE, RMSE"
+Evaluation method,Out of sample prediction on next month volatility based on prev 10 months
+Open source?,na
+Code language?,na
+Interesting notes,"The main purpose of this paper is not volatility prediction, but rather portfolio construction. Therefore, the emphasis is not on volatility prediction"
+"Subjective quality (bad, okay, good)","Bad, emphasis on portfolio construction rather than volatility prediction"
+Insights/my takeaway,
+VD,Historical volatility (unsure)
+MT,Pure
+NT,MLP
+HT,na
+PT,na
+EA,na
+pEA,na
+IN,
+IS,"Single asset, univariate (volatility)"
+IW,10 (months)
+OW,1 - 21 (month)
+SFP,TRUE
+EM,"MAPE, MAE, RMSE"
+ref,"Pyo, 2018 \cite{pyo_exploiting_2018}"
+PO,KOSPI200

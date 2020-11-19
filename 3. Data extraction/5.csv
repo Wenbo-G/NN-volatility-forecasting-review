@@ -1,0 +1,38 @@
+Title,A new adaptive network-based fuzzy inference system with adaptive adjustment rules for stock market volatility forecasting
+Authors,"Lijun Tan, Shiheng Wang, Ke Wang"
+Year,2017
+Journal,Information Processing Letters
+Aim,Proposes a new ANFIS which adaptively adjusts fuzzy inference rules by using fruit fly optimisation algorithm
+Main methods,Adaptive network based fuzzy inference (ANFIS) with adaptively adjusted fuzzy inference rules through fruit fly optimisation algorithm (FOA)
+Benchmark methods,na
+Method overview,as suggested
+Method complexity,na
+Volatility definition,Historical volatility on logged returns of the month
+Data summary,"Shanghai A-share sample stocks: 600827.SH, 600115.SH, 600018.SH, from Jan 2006 to Jul 2016. PCA was also used to transform the data"
+System in,"Macroeconomic: close, high, low, volume, range of daily fluctuations, swing, P/E ratio, price/book ratio, price/sa;es, price cash flow ratio, dividend yield ratio of Shanghai stock exchange composite index
+Microeconomic: close,high,low,volume, range of daily fluctuations, swing, p/e ratio, price to book ratio, price to sales, price cash flow ratio, dividend yield ratio, BOLL, BIAS, DMA, EXPMA, MACD, RSI, KDJ, stage high, stage low, up days, down days of sample stocks
+PCA transformed the aforementioned data, number of components not specified"
+System out,Monthly volatility of log returns
+Results summary,FOA-ANFIS performed better than ANFIS
+Performance metric,Error (just straight up difference)
+Evaluation method,"Very unclear to tell, but a picture seems to indicate that there was some kind of test set, which may indicate out-of-sample testing. It seems like only a single month was tested on"
+Open source?,na
+Code language?,na
+Interesting notes,na
+"Subjective quality (bad, okay, good)","Bad, so many missing details"
+Insights/my takeaway,na
+VD,Historical volatility
+MT,Hybrid
+NT,MLP (ANFIS)
+HT,Fuzzy
+PT,PCA
+EA,Fruit fly optimisation
+pEA,Parameter optimisation
+IN,SSE composite index
+IS,"Multi-asset, multivariate (principal components of SSE composite index (close, high, low, volume, range of daily fluctuations, swing, price earnings ratio, price to book ratio, price to sales ratio, price cash flow ratio, dividend yield ratio) and the interested stock (close, high, low, volume, range of daily fluctuations, swing, price earnings ratio, price to book ratio, price to sales ratio, price cash flow ratio, dividend yield ratio, BOLL, BIAS, DMA, EXPMA, MACD, RSI, KDJ, stage high, stage low, up days, down days))"
+IW,unsure
+OW,1 - 21 (month)
+SFP,TRUE
+EM,Error
+ref,"Tan, 2017 \cite{tan_new_2017}"
+PO,"600827.SH, 600115.SH, 600018.SH"

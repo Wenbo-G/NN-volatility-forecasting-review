@@ -1,0 +1,36 @@
+Title,Forecasting financial time series volatility using particle swarm optimisation trained quantile regression neural network
+Authors,"Dadabada Pradeepkumar, Vadlamani Ravi"
+Year,2017
+Journal,Applied Soft Computing
+Aim,"Propose a novel ANN architecture PSOQRNN, and use RF, QRRF, QRNN for volatility forecasting"
+Main methods,Particle swarm optimised quantile regression neural network (PSOQRNN)
+Benchmark methods,"GARCH, MLP, GRNN, GMDH, RF, QRRF, QRNN"
+Method overview,"The only difference for this is that QRNN is now trained with PSO. The return series is obtained from the financial price time series. The innovation (residual, r_t - r) series is obtained from the returns series, and the volatility series is also obtained from the return series"
+Method complexity,"Single hidden layer, with at most 5 neurons"
+Volatility definition,Standard deviation of logged return series over 252 samples (1 trading year)
+Data summary,"Uses some FOREX stuff, but also Gold USD price (7602 observations), crude oil price (6857 observations), S&P500 index (7581 observations), and NSE india index (4232 observations). "
+System in,"Unclear, but I assume all previous data"
+System out,"Unclear how they do their predict (e.g. one day/step ahead, all at once), but its realised volatility forecasting"
+Results summary,"For all assets of interest, PSOQRNN obtained the best results. DM test shows QRNN and QRRF is sometimes just as good as PSOQRNN, when on crude oil and NSE. Otherwise PSOQRNN is best"
+Performance metric,"MSE, Directional change statistic (Dstat), and Theils inequality coefficient (U). Additionally, Diebold and Mariano test performed"
+Evaluation method,"80% for training, 20% for test"
+Open source?,na
+Code language?,"Many: Neuroshell 2.0, MATLAB, R, Java"
+Interesting notes,Quantile regression models the relationship between dependent variable and independent variable at different quantiles
+"Subjective quality (bad, okay, good)","Okay, gives a good case for using quantile regression, might want to look into this later"
+Insights/my takeaway,
+VD,Historical volatility
+MT,Pure
+NT,MLP (Quantile regression NN)
+HT,na
+PT,na
+EA,Particle swarm optimisation
+pEA,Parameter optimisation
+IN,
+IS,unsure
+IW,unsure
+OW,1 - -252
+SFP,FALSE
+EM,"MSE, Dstat, Theils inequality coefficient (U), Diebold Mariano test"
+ref,"Pradeepkumar, 2017 \cite{pradeepkumar_forecasting_2017}"
+PO,"Gold, crude oil, S&P500, NSE"

@@ -1,0 +1,37 @@
+Title,Improving DWT-RNN model via B-spline wavelet multiresolution to forecast a high-frequency time series
+Authors,"Zeinab Hijiabotorabi, Aliyeh Kazemi, Faramarz Famil Samavati, Farid Mohammad Maalek Ghhaini"
+Year,2019
+Journal,Expert Systems with Applications
+Aim,Employ BSd in order to achieve a more accurate predicting RNN model
+Main methods,BSd-RNN
+Benchmark methods,"DWT-FFNN, Haar-RNN, dbn-RNN, GARCH, ARIMA"
+Method overview,"The original time series is preprocessed with BSd (d=1,2,3, or 4). Then, all decomposed data is fed as inputs to RNN"
+Method complexity,na
+Volatility definition,"Monthly volatility time series, of log price return, for 22 days (a trading month)"
+Data summary,"Daily closing prices of S&P500, NASDAQ, DIJA, NYSE, from the period Jun 11 2000, to Jun 11 2019 (about 5000 samples)"
+System in,"Many lagged variables (unsure), such as 3 lagged volatilities, previous lagged estimate of volatility, lagged returns, then lagged conditional average"
+System out,Next step ahead volatility forecast
+Results summary,"BSd-RNN models almost all superior to other models, with d=3, across all indices. Additionally, RNN had better performance than FFNN"
+Performance metric,"FRMSE, FMAE, FMAPE"
+Evaluation method,"80% training, 15% test, 5% out of sample forecast"
+Open source?,na
+Code language?,Matlab
+Interesting notes,"B-spline wavelet of order d (BSd) is defined as a local discrete wavelet transform. With d=1, it is Haar wavelet transform with discontinuous wavelets, with d>2 its smooth wavelets.
+One note is that they say high-frequency data, but daily data probably doesn't count as high frequency data"
+"Subjective quality (bad, okay, good)",Good. It's interesting and may be useful later.
+Insights/my takeaway,
+VD,Historical volatility
+MT,Pure
+NT,RNN
+HT,na
+PT,Wavelet transform
+EA,na
+pEA,na
+IN,
+IS,"Single asset, multivariate (volatilities, log returns, forecast volatilities, wavelet decomposed volatilities)"
+IW,3 (unsure if days or months)
+OW,1 - 22 (month)
+SFP,TRUE
+EM,"FRMSE, FMAE, FMAPE"
+ref,"Hajiabotorabi, 2019 \cite{hajiabotorabi_improving_2019}"
+PO,"S&P500, NASDAQ, DJIA, NYSE"

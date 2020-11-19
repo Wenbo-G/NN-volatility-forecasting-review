@@ -1,0 +1,37 @@
+Title,Multistep prediction of financial asset return volatility using parsimonious autoregressive sequential model
+Authors,"Xiangru Fan, Xiaoqian Wei, Di Wang, Wen Zhang, Wu Qi"
+Year,2020
+Journal,Mining Data for Financial Applications
+Aim,Propose an autoregressive distribution regression framework called parsimonious autoregressive multistep density regression (PA-MS-DR)
+Main methods,PA-MS-DR
+Benchmark methods,"8 different GARCH models, with MS-DR (the non-autoregressive version)"
+Method overview,"L = {20,40,60}, neurons units augmented ReLU = max(0.1,x). Uses GRUs to extract information from past time steps and predict distribution parameters of the PDF"
+Method complexity,"Hidden units = {1,4,8,16}"
+Volatility definition,Historical volatility (unsure) of log returns
+Data summary,"S&P500, NASDAQ100, Nikkei225 from Jan 1995 to Feb 2019, transformed into log returns"
+System in,"L x 4, where the 4 represents the return series from 1st to 4th power"
+System out,Volatility each day for 5 days in the future
+Results summary,"PA-MS-DR fit the data better (lower NLL). Under t-distribution assumption of asset returns, PA-MS-DR outperforms, with MS-DR in second. With normal distribution assumption, same thing . The t-distribution assumption performed better"
+Performance metric,Average of negative log likelihood (NLL) for the next 5 days prediction. Also Christophersen's independence test and Kupiec's proportion of failures coverage test
+Evaluation method,"Training set contains first nine tenths (90%) of the original time series, and the validation set and testing set each contain one twentieth of the original time series (5%). Model fit evaluated by overfitting and looking at negative log likelihood"
+Open source?,na
+Code language?,na
+Interesting notes,"They apparently invest a novel approximate back propagation through time algorithm for the model PA-MS-DR and its convergence is proved
+GARCH, and this method, assumes dependent variable y follows certain known family of distributions"
+"Subjective quality (bad, okay, good)","Good. A bit convoluted but interesting. Strong change from the other papers, and could draw some good ideas from this. Maybe also worth to implement this as benchmark"
+Insights/my takeaway,
+VD,Historical volatility (unsure)
+MT,Pure
+NT,RNN (GRU)
+HT,na
+PT,na
+EA,na
+pEA,na
+IN,
+IS,"Single asset, multivariate (returns to the power of 1, 2, 3, 4)"
+IW,"20, 40, 60"
+OW,"1 - unsure, 2 - unsure, 3 - unsure, 4 - unsure, 5 - unsure"
+SFP,unsure
+EM,"NLL, Christophersen's independence test, Kupiec's proportion of failures coverage test"
+ref,"Fan, 2020 \cite{fan_multi-step_2020}"
+PO,"S&P500, NASDAQ100, Nikkei225"

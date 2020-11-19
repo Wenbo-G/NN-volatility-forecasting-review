@@ -1,0 +1,36 @@
+Title,Forecasting volatility in oil prices with a class of nonlinear volatility models: smooth transition RBF and MLP neural networks augmented GARCH approach
+Authors,"Melike Bildirici, Ozgur Ersin"
+Year,2015
+Journal,Petroleum Science
+Aim,"Volatility in oil prices is aimed to be investigated, modeled by improving the conditional mean and conditional variance with nonlinear time series and neural network models. To incorporate regime switching and neural networks with GARCH models. Extending LSTAR-LST-GARCH models to RBF and MLP"
+Main methods,LSTAR-LST-GARCH-MLP and LSTAR-LST-GARCH-RBF
+Benchmark methods,"LSTAR-LST-GARCH, LSTAR-LST-FIGARCH, LSTAR-LST-APGARCH, LSTAR-LST-FIAPGARCH. GARCH"
+Method overview,"Chosing the best of 20 repetitions for a model. Number of neurons can range from 2 - 20. Firstly all models were trained with 100 repetitions (with different activations, hidden units, etc) and validated on validation set, chosen using MSE and AIC. The forecast horizon was changed to 2, 10, and 40 days to check"
+Method complexity,"2 to 20 neurons in hidden layer, I think only 1 hidden layer"
+Volatility definition,"I think historical volatility, i.e., standard deviation of logged returns"
+Data summary,"Brent crude oil spot prices daily, from Jan 20 1986 to Jan 30 2013. Converted into log daily returns series"
+System in,Hard to tell
+System out,One step ahead forecast
+Results summary,"LSTAR-LST-GARCH-MLP provide lowest in sample and out of sample error, for all forecast horizons"
+Performance metric,"RMSE, MAE, MSE."
+Evaluation method,"80% training, 10% validation, 10% out of sample forecast test"
+Open source?,na
+Code language?,na
+Interesting notes,
+"Subjective quality (bad, okay, good)",Bad. The results section is horrible. Method section is difficult to read
+Insights/my takeaway,
+VD,Historical volatility (unsure)
+MT,Hybrid
+NT,"MLP (default, RBF)"
+HT,"GARCH, LSTAR"
+PT,na
+EA,na
+pEA,na
+IN,
+IS,unsure
+IW,5
+OW,"1 - 2, 1 - 10, 1 - 40"
+SFP,TRUE
+EM,"RMSE, MAE, MSE"
+ref,"Bildirici, 2015 \cite{bildirici_forecasting_2015}"
+PO,Brent crude oil

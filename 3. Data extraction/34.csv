@@ -1,0 +1,36 @@
+Title,Volatility of main metals forecast by a hybrid ANN-GARCH model with regressors
+Authors,"Werner Kristjanpoller R, Esteban Hernandez P"
+Year,2017
+Journal,Expert Systems with Applications
+Aim,Determine whether there is an improvement in volatility predictions based on the returns of the metal groups using a hybrid NN model against a GARCH model
+Main methods,ANN-GARCH
+Benchmark methods,GARCH family
+Method overview,"The explanatory variables were analysed with correlation analysis and PCA against returns and squared returns. GARCH family adjusted each time using 252 previous rolling daily window, best model found through AIC. The ANN requires 252 GARCH predictions, so the ANN started forecasting volatility at day 512 day. The ANNGARCH model is run 3339 times (idk why). Network also tested with 1,2,3 hidden layers and 3,5,10,15,20 neurons per layer."
+Method complexity,"2 hidden layers, 5 neurons each layer"
+Volatility definition,"Realised volatility, i.e., population variance of log returns N days into the future, N=14, 21, 28"
+Data summary,"Spot price of gold, silver, copper, transformed into log returns, from Sep 7th 1999 to May 20th 2014. Additional explanatory variables: SZSE, FTSE100, SBSE Sensex, US-EURO exchange, US-YEN exchange, and log returns of oil price"
+System in,"Base level: squared metal price return, and the best GARCH prediction. Then each explanatory variable is added iteratively"
+System out,"Interday volatility, 21 day window in the future. Also 14 and 28 days too"
+Results summary,"Exploratory variable analysis showed low complementary relationships. For gold and silver, ANN-GARCH(2,5) is best. For copper, ANN-GARCH didn't improve GARCH. Similar results from QLIKE. In general, more neurons and layers gave better forecasting results, and not all variables were added. With the layer and neuron adjustments, ANN-GARCH beat GARCH for copper too"
+Performance metric,"MSE, HMSE. Also the Model Confidence Set"
+Evaluation method,"70% training, 15% validation, 15% testing."
+Open source?,na
+Code language?,na
+Interesting notes,"As I already knew, Jarque-Bera test's null hypothesis indicates that errors are normally distributed"
+"Subjective quality (bad, okay, good)","Okay, but just use Kristjanpoller's newer paper"
+Insights/my takeaway,
+VD,Historical volatility
+MT,Hybrid
+NT,MLP
+HT,GARCH
+PT,na
+EA,na
+pEA,na
+IN,"SZSE, FTSE100, SENSEX, US-EURO exchange, US-YEN exchange, oil"
+IS,"Multi-asset, multivariate (squared log returns, GARCH prediction, SZSE log returns, DJIA log returns, Euro, FTSE log returns, SENSEX log returns, Yen, oil price variation)"
+IW,252
+OW,"1 - 14, 1 - 21, 1 - 28"
+SFP,TRUE
+EM,"MSE, HMSE, MCS"
+ref,"Kristjanpoller, 2017 \cite{kristjanpoller_r_volatility_2017}"
+PO,"Gold, silver, copper"

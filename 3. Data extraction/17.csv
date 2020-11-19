@@ -1,0 +1,36 @@
+Title,Extreme learning with chemical reaction optimisation for stock volatility prediction
+Authors,"Sarat Chandra Nayak, Bijan Bihari Misra"
+Year,2020
+Journal,Financial Innovation
+Aim,Proposes extreme learning machine with chemical reaction optimisation (ELCRO) based forecasting for financial time series
+Main methods,Uses CRO (an evolutionary algorithm) as a pretraining method for ELM
+Benchmark methods,"PSO-ELM, GA-ELM, GD_ELM"
+Method overview,The weights from the ELM are pretrained with CRO. A grid search was done
+Method complexity,"6 inputs, 16 hidden neurons"
+Volatility definition,"Standard deviation of logged returns, with N = number of days before nearest expiry date"
+Data summary,Daily closing price of BSE from Apr 2 2012 to Nov 24 2017 (1400 points)
+System in,"I guess time lagged inputs, not sure if returns or volatility"
+System out,1 day ahead volatility prediction. And 1 day ahead price prediction
+Results summary,ELCRO best wrt MAPE and ARV obtained with 5-14 neuron system. Also the best at price prediction wrt MAPE and ARV. The statistical tests say the same thing
+Performance metric,"MAPE, ARV. Also Wilcoxon signed rank and Diebold Mariano test"
+Evaluation method,"950 points for training, 450 points for testing, 1 day ahead volatility prediction. Average of 20 repetitions considered"
+Open source?,na
+Code language?,MATLAB
+Interesting notes,
+"Subjective quality (bad, okay, good)","Okay, nothing special. Just ELM with some random optimisation method"
+Insights/my takeaway,
+VD,Historical volatility
+MT,Pure
+NT,MLP (ELM)
+HT,na
+PT,na
+EA,Chemical reaction optimisation
+pEA,Network pretraining
+IN,
+IS,"Single asset, univariate (sigmoid-normalised close price)"
+IW,6
+OW,1 - nearest option expiry
+SFP,TRUE
+EM,"MAPE, ARV, Wilcoxon signed rank, Diebold Mariano test"
+ref,"Nayak, 2020 \cite{nayak_extreme_2020}"
+PO,SENSEX

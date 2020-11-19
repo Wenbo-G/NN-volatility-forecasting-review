@@ -1,0 +1,37 @@
+Title,A hybrid VMD-BiGRU model for rubber futures time series forecasting
+Authors,"Qing Zhu, Fan Zhang, Shan Liu, Yiqiong Wu, Lin Wang"
+Year,2019
+Journal,Applied Soft Computing
+Aim,To introduce a hybrid model integrating variational mode decomposition (VMD) and a bidirectional neural network model and to show the efficacy of VMD methods in combination with NN methods
+Main methods,"VMD and bidirectional gated recurrent unit (Bi-GRU), using a divide and ensemble approach"
+Benchmark methods,GRU and BiGRU
+Method overview,"Divides the signal into many components, each of which is forecasted and aggregated (which is done inherently in the BiGRU model)"
+Method complexity,"4 hidden layers (input,forward,backward,output) and 1 fully connected layer. Number of nodes in each hidden layer equal to the input dimension"
+Volatility definition,Historical volatility on the daily logged returns on closing price
+Data summary,"Natural rubber futures index, RUL9 on the shanghai futures exchange (SHFE) daily data (high, low, open, close, volume). 3047 data points (Jan 4th 2006 to Jul 15th 2018)"
+System in,"Open close high low volume of underlying asset. Also, the decomposed modes of the target variable (closing price and 7 day volatility). Reorganised as a 7 day loop time window from t-7 to t-1. 0-1 normalisation applied to both the price and volatility data I think"
+System out,Daily closing price and 7 day realised volatility of logged returns of closing price
+Results summary,VMD BiGRU was better than both GRU and BiGRU in terms of error measures and directional prediction
+Performance metric,"RMSE, MAPE, $R^2$ for the prediction ability. Directional accuracy (DA, ability to predict movement of direction) also used"
+Evaluation method,"85% training (2591 data points), 15% testing (456 data points). Continuous training and test applied using a rolling time window of 180 days, i.e., first all training points are used to predict the next 180 day period in intervals of 7 days, then shift everything back 180s and restart. (unclear). Every 7 successive days of trading data were taken as the input for the model to forecast the next one, i.e., from x1 to x7, y8 is forecasted"
+Open source?,na
+Code language?,na
+Interesting notes,"The definition of volatility is from day 1, so unsure if they did next day forecasting or next period (7day) forecasting
+Using decomposed time series from VMD, in addition to the original time series allowed for better predictive ability, using a divide and ensemble approach (decompose the signal into different aspects, use different models for different aspects, aggregate the outputs of all models)"
+"Subjective quality (bad, okay, good)",Okay
+Insights/my takeaway,"They also include summary statistics of the volatility and the underlying closing price, as mean, SD,kewness, kurtosis, Jarque-Bera test, and augmented dicky fuller test. It showed the daily closing price is unstationary due to unit root, and indicates that the 7 day volatility rejects the null hypothesis. Jarque Bera showed rejection from normality of daily closing price and 7 day volatility"
+VD,Historical volatility
+MT,Pure
+NT,RNN (Bi-GRU)
+HT,na
+PT,VMD
+EA,na
+pEA,na
+IN,
+IS,"Single asset, multivariate (open, high, low, close, volume, VMD decomposed log returns, VMD decomposed 7-day volatility)"
+IW,all (unsure)
+OW,"1 - 7, 1 - 30"
+SFP,TRUE
+EM,"RMSE, MAPE, R2, DA"
+ref,"Zhu, 2019 \cite{zhu_hybrid_2019}"
+PO,RUL9 (rubber)

@@ -1,0 +1,41 @@
+Title,An evolutionary hybrid fuzzy computationally efficient EGARCH model for volatility prediction
+Authors,"Rajsharee Dash, P.K. Dash"
+Year,2016
+Journal,Applied Soft Computing
+Aim,To enhance the ability of time series model in forecasting return volatility by integrating it with suitable machine learning approach
+Main methods,Fuzzy computationally efficient EGARCH (fuzzy CE-EGARCH) and fuzzy EGARCH
+Benchmark methods,"GARCH, EGARCH, GJR-GARCH, fuzzy versions of all three, and CE-FLANN, RBF, and 2 hybrid ANFIS models"
+Method overview,"Both models use a functional link neural network (FLANN) to define fuzzy rules. The difference between the two is that the CE model includes a functional expansion of inputs by some predefined nonlinear transformation (doing some of the hard work for the model). The parameters are optimised through differential evolution (DE), an evolutionary algorithm with loss defined as MSE. Uses a multiple input multiple output strategy, all values of different output horizons are predicted"
+Method complexity,Single layer FLANN
+Volatility definition,"Historical volatility on daily log returns, however this is calculated over time window: current to nearest option expiry"
+Data summary,"Daily closing price of BSE SENSEX and S&P500 for 2nd Jan 2012 to 31st Jul 2013 (398 samples), and CNX NIFTY from 2nd Jan 2012 to 30th Apr 2013 (336 samples)"
+System in,previous stock market returns and previous volatilities (p+q) 2 lags
+System out,"Realised volatility as defined above, for next day prediction and multistep ahead prediction (1-5 days and 10 days)"
+Results summary,"GARCH vs EGARCH vs GJR-GARCH is compared, and EGARCH(1,1) wins. Fuzzy CE EGARCH is better wrt all error metrics for all three data splits. Is also better in terms of rank sum test and SPA test. Accuracy was observed to be inversely proportional to prediction horizon"
+Performance metric,"MSFE (main), RMSFE, MAFE. Also Wilcoxon rank sum test and Superior Predictive Ability (SPA) test"
+Evaluation method,"For BSE and S&P500: 224/398 samples for training, 109 for validation, rest for testing. For CNX: 172/336 samples for training, 83 for validation, rest for testing. Best of 20 repetitions observed"
+Open source?,na
+Code language?,na
+Interesting notes,"This is very very similar to another paper by Dash and Dash in this literature review
+States that there are 2 types of neuro fuzzy systems: Mamdani type and Takagi-Sugeno-Kang (TSK) type, and that the TSK type offers beter network size and learning accuracy
+Also provides summary of data. This is going to be implemented by me too
+Gives a good summary of input/output schemes, i.e., direct, recursive, DirRec
+The formulation of realised volatility wrt the nearest option expiry date is interesting. I wonder what this implies
+Was also applied to currency volatility prediction and seemed to work well"
+"Subjective quality (bad, okay, good)","Good, gives a good evaluation overview with many tests, data sets, benchmarks, etc... better than the previous paper they wrote"
+Insights/my takeaway,
+VD,Historical volatility
+MT,Hybrid
+NT,MLP (FLNN)
+HT,"Fuzzy, GARCH"
+PT,na
+EA,Differential evolution
+pEA,Parameter optimisation
+IN,
+IS,"Single asset, multivariate (log returns, volatility)"
+IW,2
+OW,"1 - nearest option expiry, 2 - nearest option expiry, 3 - nearest option expiry, 4 - nearest option expiry, 5 - nearest option expiry, 10 - nearest option expiry"
+SFP,TRUE
+EM,"MSFE, RMSFE, MAFE, Wilcoxon rank sum test, SPA"
+ref,"Dash, 2016 \cite{dash_evolutionary_2016}"
+PO,"SENSEX, S&P500, NIFTY"

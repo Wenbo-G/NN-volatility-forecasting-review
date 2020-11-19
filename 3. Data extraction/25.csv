@@ -1,0 +1,36 @@
+Title,Gold volatility prediction using a CNN-LSTM approach
+Authors,"Andres Vidal, Werner Kristjanpoller"
+Year,2020
+Journal,Expert Systems with Applications
+Aim,To generate better prediction of the future
+Main methods,CNN-LSTM
+Benchmark methods,"GARCH, SVR, LSTM, CNN, ANN, and GARCH-ANN"
+Method overview,"Time series information converted to RGB images through Gramian Angular Fields and Markov Transition Fields, constructed from a number of lags in the series, processed with a pre-trained CNN (VGG16) to extract features, combined with an LSTM that takes in lagged return series to create another embedding, then a final layer generates volatility forecasts by combining the features from the CNN and the embedding from the LSTM"
+Method complexity,"VGG16 (huge) with 4 extra layers to reduce dimensionality, and LSTM with 2 layers and a final 200 dimensional embedding"
+Volatility definition,Variance of log return in a 14 days into the future
+Data summary,"Daily spot price of gold from April 1968 to October 2017 (12530 trading days), converted to a log return series"
+System in,"(I think) the LSTM takes in 3 lags of the returns, along with the CNN taking in images"
+System out,Variance of log return in a 14 days into the future
+Results summary,"Many different parameterisations of the benchmark models were done, however the proposed CNN-LSTM was best, shown to be superior to all of the by the MCS"
+Performance metric,Model Confidence Set MCS. Also MSE
+Evaluation method,"80% training, 20% testing."
+Open source?,na
+Code language?,na
+Interesting notes,
+"Subjective quality (bad, okay, good)",Good. Should use this as a benchmark method
+Insights/my takeaway,
+VD,Historical volatility
+MT,Pure
+NT,"CNN (VGG16), RNN (LSTM)"
+HT,na
+PT,na
+EA,na
+pEA,na
+IN,
+IS,"Single asset, univariate (squared log returns)"
+IW,"all (4) for LSTM, 80 for CNN (an image is composed of 80 lags)"
+OW,1 - 14
+SFP,TRUE
+EM,"MCS, MSE"
+ref,"Vidal, 2020 \cite{vidal_gold_2020}"
+PO,Gold (spot)

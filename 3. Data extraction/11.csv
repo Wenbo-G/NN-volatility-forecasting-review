@@ -1,0 +1,40 @@
+Title,Combining high frequency data with non-linear models for forecasting energy market volatility
+Authors,"Jozef Braunik, Tomas Krehlik"
+Year,2016
+Journal,Expert Systems with Applications
+Aim,"Proposing a novel framework to forecast energy commodity volatility that couples high frequency data with ANNs to forecast energy price volatility measures, through generalised regression based on NN. Additionally, to show whether there are statistical and economic gains that can be realised by coupling high frequency data with ANNs"
+Main methods,"ANN, and linear combinations from HAR and ANN"
+Benchmark methods,"Heterogenous autoregression (HAR) and ARFIMA long memory models, and a low frequency GARCH model"
+Method overview,"Simple feedforward NN with 22 input neuron. ARFIMA(1,d,0) model"
+Method complexity,"Inputs 22 lags of volatility, 1 hidden layer with between 7 to 15 hidden neurons. I don't think training re-occurs every new step is predicted"
+Volatility definition,"Realised variance (RV), realised kernel (RK), two scale realised variance (TSRV), bipower variation (BV), median realised volatility (MedRV), jmp adjusted wavelet two scale realised variance (JWTSRV)"
+Data summary,"Crude oil, heating oil, natural gas, between Jan 5 2004 to Dec 31 2012. From the high frequency data, 5 minute log returns are extracted. Transactions on weekends and holidays were eliminated. Additionally, the data is divided into 3 periods, pre, during, post GFC (Jul 6 2006, Aug 31 2008, Oct 31 2010, Dec 31 2012)"
+System in,Time lagged volatility proxies
+System out,Multistep ahead volatility of the above volatility proxies
+Results summary,"A uniform finding is that coupling NN with high frequency data results in reductiosn in overestimating tendancy. Also, MedRV delivers best forecasts. With 1 step ahead forecasts, HAR, ANN, and HAR-ANN perform best. For 5 and 10 step ahead forecasts, HAR, ANN, and HAR-ANN are statistically identical, with the ANN having the lowest RMSE. A larger horizon implies less error from ANN or HAR-ANN. MedRV is the best measure for forecasting volatility. HAR and ANN generally forecasts best, with low frequency GARCH yielding the largest errors. Coupling realised measures with ANN results in statistical and economical gains, and that MedRV is the best approximation of volatility when forecasting"
+Performance metric,"Model Confidence Set (implemented with a stationary bootstrap with average blocklength of 20 days), SPA. Accuracy with RMSE, MAE, mean mixed error (MME) for over and under predictions. Also MZ regression for information content. Also economic evaluation"
+Evaluation method,"First 600 for in sample training, and remaining 1631 for out of sample evaluation of 1 step ahead and cumulative 5 and 10 step ahead forecasts"
+Open source?,na
+Code language?,na
+Interesting notes,"Pioneering work in realised volaility recognised the benefits of using high frequency data in terms of increased accuracy, subsequent research proposes several estimators that improve model efficiency and robustness to market microstructure effects, and the ability to separately estimate the variation due to the contiuous part of the price process, and variation due to the jump part of the price process
+GARCH type models commonly over predict volatility
+Assumed that the latent log commodity price follows a standard jump diffusion process contaminated by microstructure noise
+Anderson 2001 and Barndorff-Nielsen 2002 say quadratice variation is a natural measure of variability in the log price process
+RMSE and MAE do not provide insight on the asymmetry of prediction (over vs under vs balanced) and therefore MME is used"
+"Subjective quality (bad, okay, good)","Good, contains a huge evaluation of realised volatiliy proxies which could be useful for my future work"
+Insights/my takeaway,"So many volatility proxies that could be used, not just realised or implied volatility"
+VD,"Realised volatility, other (jump based)"
+MT,Hybrid
+NT,MLP
+HT,HAR
+PT,na
+EA,na
+pEA,na
+IN,
+IS,"Single asset, univariate (volatility)"
+IW,22
+OW,"1, 1 - 5, 1 - 10"
+SFP,TRUE
+EM,"MCS, SPA, RMSE, MAE, MME, M-Z R2"
+ref,"Barunik, 2016 \cite{barunik_combining_2016}"
+PO,"Crude oil, heating oil, natural gas"

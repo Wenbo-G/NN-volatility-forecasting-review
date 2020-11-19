@@ -1,0 +1,41 @@
+Title,A neural network enhanced volatiltiy component model
+Authors,"Jia Zhai, Yi Cao, Xiaoquan Liu"
+Year,2020
+Journal,Quantitative Finance
+Aim,To showcase the value of data science methods in addressing traditional research questions in finance. 
+Main methods,"Two component model with wavelet transform for long run component, forecasted with autoregressive neural network, then short term component forecasted with ARMA(2,2). Additionally, tries out LSTMs and GRUs to forecast long run component"
+Benchmark methods,"GARCH and two component model of Harris et al. ""a cyclic model of exchange rate volatility"""
+Method overview,Early stop regularisation was used with the 30% validation data
+Method complexity,"3 layer ARNN (1 hidden), with 4 input neurons and 10 hidden neurons. Also used 5 and 15 hidden neurons with similar results"
+Volatility definition,Realised volatility: aggregate intraday squared log returns to obtain daily realised volatility
+Data summary,"5 minute CSI300 index, 144667 observations, in sample period is 1st Aug 2005 to 31st July 2008, out of sample period is 1st Aug 2008 to 29th September 2017"
+System in,daily realised volatility
+System out,"realised volatility over different horizons: 1-5,1-20,1-100,100-200,260-360,400-500"
+Results summary,"The hybrid model performs better than the other two for all time periods for all performance metrics, except RMSFE for CSI300 in 1-100 day period. Swapping realised volatility with range based intraday volatility doesn't change anything, hybrid still performs best. Changing the loss/error function from RMSFE to QLIKE, hybrid is still preferred. Using LSTM or GRU to forecast the longterm component shows similar results as the normal hybrid one. Economic value of volatility forecasting suggests that hybrid is better than competing models for making money"
+Performance metric,"RMS forecast error (RMSFE), Diebold and Mariano statistic, Superior predictive ability SPA test of Hansen, bootstrapped p-values over 1000 replications, Interval forecast evaluation of Christoffersen, and QLIKE as the loss function when comparing volatility predictions"
+Evaluation method,"70% training, 30% validation. The model used a rolling forward procedure, i.e., each prediction is a function of the last 4 observations. Multistep forecast was achieved by feeding in predictions. Additionally, rerun with volatility being computed as intraday price range. Additionally performs a portfolio exercise to explore economic gain of the volatility forecasts"
+Open source?,na
+Code language?,na
+Interesting notes,"Two component models (i.e., ones that break down the forecasts into long run and short run) generate more accurate forecasts than one factor ones. 
+Apparently range based volatiltiy measures have received renewed attention as it is shown to be more efficient than the squared return and more robust than realised volatility in handling market microstructure noise
+The appropriate level of wavelet decomposition was determined using a Augmented Ducky Fuller test on the short term (i.e., the residuals). As it was assumed to be 0 mean constant variance, the wavelet decomposition ensured this"
+"Subjective quality (bad, okay, good)",Okay
+Insights/my takeaway,"Again, a summary table of the data is given, with mean, SD, skewness, kurtosis, autocorrelation coefficients and the Ljung and Box statistic for autocorrelation for the first 5 lags. Additionally, a plot of the autocorrelation of daily realised volatility for up to 30 lags for the asset
+interesting that hybrid-LSTM and hybrid-GRU didn't change much from hybrid
+Really emphasizes the importance of long short term decomposition
+They also may have de-seasoned the data, something that I might want to look into"
+VD,Realised volatility (intraday)
+MT,Hybrid
+NT,MLP
+HT,ARMA
+PT,Wavelet transform
+EA,na
+pEA,na
+IN,
+IS,"Single asset, univariate (wavelet decomposed volatility)"
+IW,4
+OW,"1 - 5, 1 - 20, 1 - 100, 100 - 200, 260 - 360, 400 - 500"
+SFP,TRUE
+EM,"RMSFE, DMariano statistic, SPA, bootstrapped p-values over 1000 replications, interval forecast evaluation of Christoffersen, QLIKE"
+ref,"Zhai, 2020 \cite{zhai_neural_2020}"
+PO,CSI300

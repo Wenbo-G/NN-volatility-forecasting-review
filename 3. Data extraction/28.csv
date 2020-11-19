@@ -1,0 +1,37 @@
+Title,Machine learning for multi-step ahead forecasting of volatility proxies
+Authors,"Jacopo De Stefani, Olivier Caelen, Dalila Hattab, Gianluca Bontempi"
+Year,2017
+Journal,CEUR Workshop Proceedings
+Aim,"To perform a statistical assessment of the relationships among the most used proxies, and explore a nonlinear autoregresssive with exogenous input (NARX) approach to estimate multiple steps of the output where the output and input are 2 different proxies"
+Main methods,"NAR and NARX formulation for: feedforward NN, kNN, SVM"
+Benchmark methods,"GARCH(1,1), and naive method"
+Method overview,"NAR formulation, assumes autoregressive dependence, where future value depends on past values + zero mean noise, and therefore can use NN. The forecast is a multistep ahead of horizon H single output learning task, employing direct strategy. NAR will only use previous values of a volatility proxy, whilst NARX will use an additional volatility proxy. Embedding is 2 or 5 previous proxies, and H is from 2,5,8,10,12"
+Method complexity,na
+Volatility definition,"Volatility as variance: rolling standard deviation of stocks returns over window size n. Volatility as a proxy of coarse grained intraday information, by Garman, divides into night and day volatility, approximated with high low open close daily data. GARCH-based volatility using GARCH(1,1) as a filter."
+Data summary,"40 time series in the French stock market index CAC40, from 5th Jan 2009 to 22nd Oct 2014 (1489 OHLCV samples), converted to return series"
+System in,"I believe it's the previous volatility proxies, up to embedding dimension in the past, and another volatility proxies for the NARX formulation"
+System out,Primary volatility proxy forecast H steps ahead
+Results summary,"All the ML methods outperform naive and GARCH method. Increasing embedding dimension and introducing external regressor imprive performance, however the additional regressor for 8 step ahead horizon shows statstical significance. SVR model seem to produce smaller forecast errors that those of ANN and kNN"
+Performance metric,"MASE, normalised at each forecasting horizon by the naive method"
+Evaluation method,"Results averaged across the 40 time series. The size of the training set is 66%, repeated for 50 test sets of length H"
+Open source?,na
+Code language?,R
+Interesting notes,"Since volatility is not directly observable given the time series, according to the granularity and the type of the available data, one could compute different measures, named volatility proxies (Poon and Granger)
+In the absence of detailed information concerning price movements within a given trading day, stock volatility becomes directly unobservable (Tsay RS 2005)"
+"Subjective quality (bad, okay, good)",Good. Well structure. Not super interesting but written well
+Insights/my takeaway,
+VD,"Historical volatility, other (range based), other (GARCH as filter)"
+MT,Pure
+NT,MLP
+HT,na
+PT,na
+EA,na
+pEA,na
+IN,
+IS,"Single asset, univariate (primary volatility proxy), multivariate (primary volatility proxy, additional volatility proxies, volume)"
+IW,"2, 5"
+OW,"1 - 2, 1 - 5, 1 - 8, 1 - 10, 1 - 12"
+SFP,TRUE
+EM,MASE (normalised at each forecasting horizon by the naive method)
+ref,"Stefani, 2017 \cite{stefani_machine_2017}"
+PO,CAC40 (all constituents)

@@ -1,0 +1,36 @@
+Title,Novel volatility forecasting using deep learning long short term memory recurrent neural networks
+Authors,Yang Liu
+Year,2019
+Journal,Expert Systems with Applications
+Aim,"Propose how to use LSTM RNNs to improve financial volatility performance, use them correctly and compare them with popular v-SVR and GARCH models"
+Main methods,LSTM (2 layer)
+Benchmark methods,"GARCH(1,1) with differential evolution (DE) and 2 nonlinear regression models: v-SVR with gaussian RBF, and 1 layer LSTM"
+Method overview,As implied
+Method complexity,"30 neurons per hidden layer, 2 hidden layers. Also tested with 10,20,...,90,100 neurons per layer"
+Volatility definition,realised volatility of returns. Sum of squared log returns
+Data summary,S&P500 and AAPL from 3rd Jan 2000 to 29th Nov 2013
+System in,"1 lagged return and volatility. Then with additional lags of 2,3,4,5"
+System out,"Next day volatility prediction, and third day volatility prediction"
+Results summary,"Single layer LSTM predicted best for AAPL, v-SVR best for S&P500, 2 layers did not improve performance. For third day prediction, the same: v-SVR best for S&P500, LSTM(1) best for AAPL. With 2 lagged inputs the v-SVR and LSTM(1) improved a bit, with 5 lagged there was no improvement. 30 neurons per layer shown to be best. All were better than GARCH, overall v-SVR better at S&P500 whilst LSTM better for AAPL."
+Performance metric,RMSE
+Evaluation method,"Training 11 years (3rd Jan 2000 to 2nd Dec 2011), validation 5th Dec 2011 to 29th Nov 2013. 20 fold cross-validation somehow"
+Open source?,na
+Code language?,Python (Keras)
+Interesting notes,
+"Subjective quality (bad, okay, good)",Okay. Deep model but not so interesting
+Insights/my takeaway,
+VD,Realised volatility
+MT,Pure
+NT,RNN (LSTM)
+HT,na
+PT,na
+EA,na
+pEA,na
+IN,
+IS,"Single asset, multivariate (volatility, log returns)"
+IW,"1, 2, 3, 4, 5"
+OW,"1 - unsure, 3 - unsure"
+SFP,unsure
+EM,RMSE
+ref,"Liu, 2019 \cite{liu_novel_2019}"
+PO,"S&P500, AAPL"

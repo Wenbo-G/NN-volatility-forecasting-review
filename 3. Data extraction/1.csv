@@ -1,0 +1,40 @@
+Title,A differential harmonry search based hybrid interval type2 fuzzy EGARCH model for stock market volatility prediction
+Authors,"Rajashree Dash, P.K. Dash, Ranjeeta Bisoi"
+Year,2015
+Journal,International Journal of Approximate Reasoning
+Aim,To enhance the ability of time series model in forecasting return volatility by integrating it with suitable machine learning approach.
+Main methods,"IT2F-CE-EGARCH(p,q) - interval type 2 fuzzy logic system and computationally efficient EGARCH, parameter search accomplished through differential harmony search (DHS). Also IT2F-EGARCH, type 1 fuzzy EGARCH, type 1 fuzzy CE EGARCH. The neural network is used as a computationally efficient functional link neural network (FLNN) in the fuzzy rules. I believe it is used to create the decision boundaries between the fuzzy regions. Other parameters of the model are optimised with differential harmony serach by minimizing the RMSE."
+Benchmark methods,"GARCH, EGARCH, GJR-GARCH"
+Method overview,"Firstly, benchmark models (GARCH, EGARCH, GJR-GARCH) are compared"
+Method complexity,"Unclear, but the base NN model is a single layer model, with an expanded input set, the expansion is computed as a few nonlinear transforms on the inputs"
+Volatility definition,Realised volatility on logged returns: r_t = 100(ln P_t - ln P_{t-1})
+Data summary,"BSE SENSEX daily closing price (333 samples, 2nd Jan 2012 to 30th Apr 2013). CNX NIFTY daily closing price (255 samples, 2nd Jan 2012 to 4th Jan 2013)"
+System in,"Daily logged returns, and daily realised volatility of p+q lags (1+1)"
+System out,One day ahead predicted realised volatility
+Results summary,"Of the benchmarks, EGARCH(1,1) was best. Of the novel ones, IT2F-CE-EGARCH was best"
+Performance metric,"MSFE (main), RMSFE, MAFE, Rel MAE. Also Superior Predictive Ability (SPA) test by Hansen is also used, and residual analysis including the whiteness and independence test is also performed"
+Evaluation method,"BSE: 218 samples for training, rest for testing (65\% training). CNX: 166 sampples for training, rest for testing (65\% training). 20 repeated runs on the above sampled data, average reported"
+Open source?,na
+Code language?,na
+Interesting notes,"GARCH does not recognise the transmission of volatility that comes from the input of positive or negative information, therefore is not appropriate when the market is asymmetric. May not be able to simulate stock fluctuations with volatility clustering well
+Type 1 fuzzy systems are strict boundaries, whereas type 2 fuzzy systems accounts for uncertainty with nonstrict boundaries
+This reports summary statistics of the log return, which might be common practice. Plotting it also shows the return series are mean stationary and exhibit the typical volatility clustering
+A test with the autocorrelation function and partial autocorrelation function and Jarque Bera test showed that it is suitable to model and forecast the return series with lag order (1,1)
+Realised volatility definition has a time window up to the nearest expiry option"
+"Subjective quality (bad, okay, good)",Okay
+Insights/my takeaway,"Maybe I should plot the time series of log return and volatility, in addition to a summary statistics table for mean,minimum,maximum,SD,skewness,kurtosis,and normal-ness (which they tested with Jarque-Bera test)"
+VD,Historical volatility
+MT,Hybrid
+NT,MLP (FLNN)
+HT,"GARCH, Fuzzy"
+PT,na
+EA,Differential harmony search
+pEA,Parameter optimisation
+IN,
+IS,"Single asset, multivariate (log returns, volatility)"
+IW,2
+OW,1 - nearest option expiry
+SFP,TRUE
+EM,"MSFE, RMSFE, MAFE, rel MAE, SPA, residual analysis"
+ref,"Dash, 2015 \cite{dash_differential_2015}"
+PO,"SENSEX, NIFTY"

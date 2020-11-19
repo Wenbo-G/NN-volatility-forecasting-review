@@ -1,0 +1,41 @@
+Title,A neural stochastic volatility model
+Authors,"Rui Luo, Weinan Zhang, Xiaojun Xu, Jun Wang"
+Year,2018
+Journal,Association for the Advancement of Artificial Intelligence (AAAI)
+Aim,Propose a neural network reformulation of stochastic volatility by leveraging stochastic models and RNNs
+Main methods,"NSVM: Network (autoregressive RNN and bidirectional RNN) to model a latent stochastic variable inferred from observation, then another network (pair of RNN and an MLP) to predict volatility from the sequence of latent variables"
+Benchmark methods,"Quadratic models ARCH(1), GARCH(1,1), GJR-GARCH(1,1,1) 
+Absolute value models AVARCH(1), AVGARCH(1,1), TARCH(1,1,1)
+Exponential models EARCH(1), EGARCH(1,1)
+MCMC volatility model: stochvol
+Gaussian process volatility model GP-Vol"
+Method overview,"During training, a single model is trained on each time step for all the training samples. During testing, retraining occurs every 20 steps. Additionally, all baselines are retrained every time step.
+Additionally, 2 types of covariance configurations, diagonal, and diagonal with rank 1 perturbation"
+Method complexity,"Each RNN module contains 1 hidden layer of size 10, the MLP is 2 layer fully connected hidden layer size 10, output layer of MLP is 8 and 12"
+Volatility definition,Historical volatility (unsure) on logged returns
+Data summary,"Daily closing prices of 162 stocks, Chinas A shares starting from 2006 or earlier, cleaned by aligning mismatched values, interpolating missing values through stochastic regression. Sets of 6 series were combined to create one timeseries input, 2000 of these were used. The total length of each 6-dimensional time series was 2570 samples (roughly 7 years)"
+System in,Normalised log returns (xt = log(pt/pt-1))
+System out,"Unclear, but I think it's realized volatility of logged returns, but not sure over what time window"
+Results summary,"NSVM with rank 1 perturbation achieved higher accuracy over all baselines for all 162 stocks. Additionally, seems to be more sensible on drastic changes and better stability on moderate changes"
+Performance metric,Negative log likelihood
+Evaluation method,"2000 time steps for training and validation, 570 time steps for testing"
+Open source?,na
+Code language?,na
+Interesting notes,Fundamentally from stochastic differential equations
+"Subjective quality (bad, okay, good)","Good, for stochastic models and stochastic differential equations"
+Insights/my takeaway,"When choosing the time series data, consideration was given to suspension days. I should probably do this too"
+VD,Historical volatility (unsure)
+MT,Pure
+NT,RNN
+HT,na
+PT,na
+EA,na
+pEA,na
+IN,
+IS,"Single asset, univariate (log returns)"
+IW,all (unsure)
+OW,1 - unsure
+SFP,TRUE
+EM,NLL
+ref,"Luo, 2018 \cite{luo_neural_2018}"
+PO,China A shares (all 162 constituents)

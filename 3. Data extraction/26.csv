@@ -1,0 +1,38 @@
+Title,ieRSPOP: A novel incremental rough set-based pseudo outer-product with ensemble learning
+Authors,"Ron Tor Das, Kai Keng Ang, Chai Quek"
+Year,2016
+Journal,Applied Soft Computing
+Aim,To enhance the robustness of RSPOP with incremental learning using an adapted two phase discrete incremental clustering for membership function generation
+Main methods,GARCH hybridised with ieRSPOP fuzzy NN
+Benchmark methods,GARCH family
+Method overview,"Two phase discrete incremental clustering allows the system to work well with time series information, ensemble learning ensures past learning will not be forgotten, and RSPOP is the main learning algorithm (I think)"
+Method complexity,na
+Volatility definition,Sum of 5 min logged returns squared
+Data summary,Stock price of all 27 components of the Straits Time Index (STI) from 1st Jan 1999 to 1st Jan 2010 (ranging from 1318 to 2435 samples). Training size is chosen as 250 tuples
+System in,"The output of 3 GARCH models (GARCH (1,1) EGARCH (1,1) GJR-GARCH(1,1)), extracting innovation and variance information, passed into the ieRSPOP to forecast 1 day ahead volatility. Also takes in intraday volatility indicators. Each GARCH model takes in different information, all 3 take intraday volatility indicator, all 3 take variance, GARCH and GJR-GARCH take innovations, EGARCH takes asymmetric shock, EGARCH and GJR-GARCH take leverage effect. 5 day lag"
+System out,1 day ahead volatility forecast
+Results summary,"Forecasts of the ieRSPOP only approach but not outperform GARCH models, but ieRSPOP provides interpretable rules"
+Performance metric,"MAE, MSE, R2"
+Evaluation method,Unclear
+Open source?,na
+Code language?,na
+Interesting notes,"Rough set based pseudo outer product (RSPOP) attempts to boost accuracy of Mamdani type fuzzy nerual networks
+Stability plasticity dilemma: learning without forgetting
+Stipulates that RV is the sum of squared intraday returns of M intervals,each of length, then as M tends to inf and d tends to 0, RV converges to the quadratic variation of all semi matingales. RV is an unbiased estimator of true volatility (see references)"
+"Subjective quality (bad, okay, good)","Okay, the idea might be good, but the paper is really convoluted and a mix of so many things, not elegant"
+Insights/my takeaway,"One way around catastrophic forgetting is ensemble new networks? I.e., a network trained on period"
+VD,Realised volatility (intraday)
+MT,Hybrid
+NT,MLP
+HT,"Fuzzy, GARCH"
+PT,na
+EA,na
+pEA,na
+IN,
+IS,"Single asset, multivariate (outputs of GARCH, EGARCH, GJR-GARCH, which use innovations, log variance, asymmetric shock, leverage effect, intraday volatility indicator (which is realised volatility, realised range, realised power variation, bipower variation))"
+IW,5
+OW,1
+SFP,TRUE
+EM,"MAE, MSE, R2"
+ref,"Das, 2016 \cite{das_ierspop_2016}"
+PO,STI (all constituents)

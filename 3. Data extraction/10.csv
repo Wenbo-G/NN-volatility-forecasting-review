@@ -1,0 +1,37 @@
+Title,Cholesky ANN models for predicting multivariate realised volatility
+Authors,Andrea Bucci
+Year,2020
+Journal,Journal of Forecasting
+Aim,To produce more accurate forecasts than existing econometric models in a multivariate context
+Main methods,"Cholesky factors with 4 different RNNs: Elman, Jordan, LSTM, NARX-SP (nonlinear autoregressive exogenous - semi parallel NN)"
+Benchmark methods,Cholesky vector autoregressive model (VAR)
+Method overview,"Decomposition of covariance matrices in to Cholesky factors. The volatility is represented as a covariance matrix, which is Cholesky decomposed. The Cholesky lower trangular matrix is forecasted from previous ones, then the forecasted covariance matrix can be recomposed from the lower triangular forecast, unsuring positive definiteness. # of neurons chosen from RMSE of training"
+Method complexity,Single hidden layer
+Volatility definition,Realised convariance matrix from the daily returns. I think the covariance matrices are defined for the month. 
+Data summary,"S&P500, 10year tresury note futures, 1 month treasury bond future (428 monthly realised convariance matrices) from May 1982 to Dec 2017"
+System in,"Cholesky decomposed lower triangular matrices, along with: dividend price, price earning ratio, equity market return, fama french 3 factors, 1month t bill rate, term spread difference between log and short term bond yields, inflation rate, industrial production growth"
+System out,"Cholesky decomposed lower triangular matrix, which is recomposed into covariance matrix"
+Results summary,"NNs provide better overall results, and Cholesky decomposition seem to improve out of sample forecasts. RNNs outperform VAR for S&P500. JNN and NARX models do best in terms of DM test. Contrary to univariate models, NNs show modest gain in forecast accuracy. Long term dependence detecting models like NARX and LSTM seem to privde best forecasting performance. Cholesky decomposition seems to improve forecasting accuracy for models that are not based on a parametisation"
+Performance metric,"MSE (univariate comparison), Frobenius distance and Euclidean distance (multivariate comparison), MAE and RMSE and Diebold Mariano test for each element of covariance matrix"
+Evaluation method,Parameters were trained with 300 different starting values. In sample: May 1982 to April 2007. Out of sample: May 2007 to Dec 2017. One step ahead forecast. Unsure if retraining occurred for each next step forecasting
+Open source?,na
+Code language?,na
+Interesting notes,"Volatility asymmetrically responds to unexpected news, so linear methods may not be adequate
+High frequency data may be used to estimate the latent condtional volatility of a portfolio"
+"Subjective quality (bad, okay, good)","Good, interesting use of decomposition and forecasting that, enforcing positive definiteness"
+Insights/my takeaway,
+VD,Realised volatility
+MT,Pure
+NT,RNN
+HT,na
+PT,Cholesky decomposition
+EA,na
+pEA,na
+IN,
+IS,"Multi-asset, multivariate (Cholesky factors, dividend price, price earning ratio, equity market return, FF 3 factors, 1m t-bill rate, term spread difference between log and short term bond yields, inflation rate, industrial production growth, all lagged 1 period)"
+IW,all (1)
+OW,1 - 21 (month)
+SFP,TRUE
+EM,"MSE (univariate comparison), Frobenius distance (multivariate comparison), Euclidean distance (multivariate comparison), MAE, RMSE, Diebold Mariano test"
+ref,"Bucci, 2020 \cite{bucci_choleskyann_2020}"
+PO,"S&P500, 10y treasury note futures, 1m treasury bond futures"

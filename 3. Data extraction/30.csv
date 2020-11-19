@@ -1,0 +1,36 @@
+Title,Noise cancelling in volatility forecasting using an adaptive neural network filter
+Authors,"Soheil Almasi Monfared, David Enke"
+Year,2015
+Journal,Procedia Computer Science
+Aim,"To use a neural network adaptive filter to reduce GARCH(1,1) forecasting noise (error)"
+Main methods,"GARCH (1,1) with NAR NN with lag 3 for filtering, activated when threshold is met, to reduce larger than expected noises"
+Benchmark methods,"GARCH (1,1) without filter"
+Method overview,"Portfolio optimised every 90 days using Sharpe ratio, min position is 5% for each stock. Volatility in Sharpe ratio forecasted. GARCH(1,1) updated every day based on the last 30 days of log return data to forecast one step ahead volatility. The NAR(3) is updated every day based on the last 500 days of noise to forecast one step ahead. When it says updated, I think it means trained"
+Method complexity,6 neurons in one hidden layer
+Volatility definition,Proxy of the volatility is the squared return of the portfolio calculated based on the return for the last 30 days
+Data summary,"5 randomly selected from S&P500 index (Allstate corp. Walt Disney, WW Grainger, HP company, Brown-Forman corp.). Adjusted closing price from 2nd Apr 2007 to 31st Dec 2010, transformed into log returns"
+System in,3 lags for the NN
+System out,One step ahead volatility forecast
+Results summary,The filter reduces error by 42.9%. The filter was active all the time. 
+Performance metric,MSE
+Evaluation method,"Although out of sample evaluation was not mentioned, I think it's implied that it was done"
+Open source?,na
+Code language?,MATLAB
+Interesting notes,
+"Subjective quality (bad, okay, good)",Bad. Simple and non-novel idea
+Insights/my takeaway,
+VD,Realised volatility
+MT,Hybrid
+NT,MLP
+HT,GARCH
+PT,na
+EA,na
+pEA,na
+IN,
+IS,"Single asset, univariate (error from GARCH (1,1) model)"
+IW,3
+OW,1 - unsure
+SFP,unsure
+EM,MSE
+ref,"Monfared, 2015 \cite{monfared_noise_2015}"
+PO,"S&P500 (5 randomly selected: Allstate corp., Walt Disney, WW Grainger, HP company, Brown-Forman corp.)"

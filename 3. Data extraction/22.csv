@@ -1,0 +1,36 @@
+Title,Forecasting volatility of oil price using an artificial neural network-GARCH model
+Authors,"Werner Kristjanpoller, Marcel C Minutolo"
+Year,2016
+Journal,Expert Systems with Applications
+Aim,"Extends previous research in hybrid modeling, by using multiple information streams, different forecast horizons, measuring performance with heteroscedasticitiy adjusted loss functiuons, and proposing a new way to select explanatory variables for inclusion in the forecast model"
+Main methods,ANN-GARCH
+Benchmark methods,ARFIMA
+Method overview,"A GARCH(1,1) with moving window length 252 model forecasts volaitility, and the ANN GARCH takes this in, along with the financial time series data (daily variations of EUR exchange rate, YEN exchange rate, DIJA, and FTSE indices), and forecasts volatility in the future. Next step ahead forecast takin the last 21 days to calculate it with a rolling window of 252 days. Additionally, the forecast is varied from 21 to 14 and 28 days too. The base level model was 2 layer 5 neuron per layer taking inputs squared return and GARCH prediction. The input space was iteratively increased by including DIJA, EUR, FTSE, YEN, in that order. Gridsearch over 1 to 5 layers, 2,5,10,20 neurons per layer"
+Method complexity,"Base model: 2 layers, 5 neurons per layer "
+Volatility definition,"Historical volatility in a 21 day window (1 trading month) of log price differences (i.e., log returns)"
+Data summary,Oil spot price and oil futures price from July 2002 to May 2014
+System in,"GARCH predictions, return series, and more. Not sure how the lag is structured, e.g. 12 lags of 21 day windows for 252 days?"
+System out,Next step forecast (21 days ahead volatiltiy)
+Results summary,"GARCH was superior than ARFIMA. ANN-GARCH with 4 inputs was best model for both spot and future volatility prediction in 21 day window. This was the same for spot volatility in 14 and 28 days, but was 6 variables for future volatility in 14 and 28 day. Different model architectures found to be optimal for different tasks"
+Performance metric,"MSE, RMSE, MAE, HMSE, HMAE. Also MCS"
+Evaluation method,"Unclear, but I think they are using out of sample forecasts"
+Open source?,na
+Code language?,na
+Interesting notes,
+"Subjective quality (bad, okay, good)","Good. Pretty comprehensive method, multimodal, grid search, elegant method. Would like to use this as a benchmark"
+Insights/my takeaway,"Heteroscedasticity adjusted loss/error functions could be important to me, may need to look into it."
+VD,Historical volatility
+MT,Hybrid
+NT,MLP
+HT,GARCH
+PT,na
+EA,na
+pEA,na
+IN,"DJIA, EUR exchange rate, FTSE100, JPY exchange rate"
+IS,"Multi-asset, multivariate (GARCH predictions, square log returns, DJIA log returns, EUR exchange rate variation, FTSE log returns, JPY exchange rate variation)"
+IW,252
+OW,"1 - 14, 1 - 21, 1 - 28"
+SFP,TRUE
+EM,"MSE, RMSE, MAE, HMSE, HMAE, MCS"
+ref,"Kristjanpoller, 2016 \cite{kristjanpoller_forecasting_2016}"
+PO,Oil (spot and futures)

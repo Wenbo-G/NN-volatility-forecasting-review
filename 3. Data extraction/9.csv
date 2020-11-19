@@ -1,0 +1,42 @@
+Title,Chaotic behavior in financial market volatility
+Authors,"Houda Litimi, Ahmed BenSaida, Lotfi Belkacem, Oussama Abdallah"
+Year,2019
+Journal,Journal of Risk
+Aim,Study the presence of chaotic dynamics in fianncial market volatility based on the largest Lyapunov exponent with major modifications to account for noise sensitivity and data limited availability. Also model the volatility and address the issue of market risk forecasting through chaotic maps
+Main methods,MLP to define a mapping from the embedded input to future implied volatilies
+Benchmark methods,"logsistic map and gaussian map, both to estimate f"
+Method overview,"Given an L (lag) and m (embedding dimension), a smooth map f predicts the next volatility in the series. Here, f is learned by a nerual network"
+Method complexity,"The NN is 1 layer, and number of nodes vary for each index, with maximum 12 input neurons and 10 hidden neurons"
+Volatility definition,"Implied standard diviation of options on the corresponding market indices over the next 30 days (i.e., the definition of the volatility indices themselves)"
+Data summary,"Eight daily major volatility indices: VIX, VSTOXX, JNIV, VFTSE, VDAX, VCAC, VAEX, VSMI from 1st Jan 2001 to 15th Dec 2016"
+System in,"X = [x_t-L, x_t-2L, ... , x_t-mL], where x is the level of volatility as defined by the index"
+System out,"x_t, the level of implied volatility of a given index, defined by the volatility index"
+Results summary,"Chaos found in all  volatility indices. Graphically, logistic map failes to fit periods of high volatility, like 2002 market downturn and GFC, gaussian map overestimates risk during these periods. NN performs better than other maps. These seem to not be in the out of sample testing
+For out of sample testing, NN shown to be the best by a large margin with MSE and QLIKE over all indices"
+Performance metric,"Presence of chaos test: 0-1 test and their own chaos test
+general adjusted R2, standard error, Bayesian information criterion BIC
+Model confidence set MCS, using MSE and QLIKE"
+Evaluation method,Out of sample forecasting on Dec 16 2016 to Dec 31 2017 (266 observations)
+Open source?,na
+Code language?,na
+Interesting notes,"Chaos indicates an apparent disorder that nevertheless obeys specific reules and is highly sensitive to initial conditions
+A small change in initial conditions creates a difference in trajectories. The Lyapunov exponent measures the average exponential divergence or convergence between nearby trajectories within a time horizon
+2 methods exist to estimate Lyapunov exponent, direct and Jacobian. The latter can give consistent estimates in the presence of noise
+There is a claim that a MLP is chaotic under some conditions, and is apparently proven"
+"Subjective quality (bad, okay, good)","Good, for chaos"
+Insights/my takeaway,
+VD,Implied volatility
+MT,Hybrid
+NT,MLP
+HT,Chaos theory
+PT,na
+EA,na
+pEA,na
+IN,
+IS,"Single asset, univariate (volatility)"
+IW,2-48
+OW,1
+SFP,TRUE
+EM,"General adjusted R2, standard error, BIC, MCS, MSE, QLIKE"
+ref,"Litimi, 2019 \cite{litimi_chaotic_2018}"
+PO,"VIX, VSTOXX, JNIV, VFTSE, VDAX, VCAC, VAEX, VSMI"

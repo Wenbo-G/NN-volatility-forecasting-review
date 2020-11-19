@@ -1,0 +1,36 @@
+Title,Prediction of financial time series and its volatility using a hybrid dynamic neural network trained by sliding mode algorithm and differential evolution
+Authors,Ranjeeta Bisoi and P.K. Dash
+Year,2015
+Journal,International Journal of Information and Decision Sciences
+Aim,"A unifying approach of using dynamic neural networks (DNNs) for predicting stock market prices and volatility, forecasting chaotic stock price indices and volatility from one day ahead to one month ahead"
+Main methods,Hybrid DNN and differential evolution (DE) for learning parameters with CEFLANN: DEDNNFLANN
+Benchmark methods,"DNNFLANN, GARCH"
+Method overview,"Computationally efficient FLANN, where each input is expanded through a set of nonlinear functions. Sliding mode learning algorithm, formulating error in such a way that given an arbitrary initial condition, the learning error will converge to 0. DE is used to initialise the network"
+Method complexity,"14 IIR filter neurons, 7 FLANN functions, 56 FLANN parameters"
+Volatility definition,"Moving average of squared difference between the log return and its mean value (i.e., population variance of log returns, current volatility is a function of current return and 4 past returns)"
+Data summary,"Daily close prices of Nifty and RIL, from 3rd Jan 2005 to 18th Oct 2007"
+System in,"Past 5 days of variance and log price returns (I think), scaled to range (0,1). Also technical indicators SMA, EMA, MACD"
+System out,"Next day ahead volatility prediction, and 1 week ahead, and more"
+Results summary,"The proposed method (DEDNNFLANN) performs better than GARCH, for all time horizons"
+Performance metric,"ME, MAE, RMSE"
+Evaluation method,Training: 500 points from 3rd Jan 2005 to 28th Dec 2006. Testing: 200 points from 29th Dec 2006 to 18th Oct 2007
+Open source?,na
+Code language?,MATLAB
+Interesting notes,
+"Subjective quality (bad, okay, good)","Okay, but just use Dash's newer papers "
+Insights/my takeaway,
+VD,Historical volatility
+MT,Pure
+NT,MLP (FLNN and dynamic NN)
+HT,na
+PT,na
+EA,Differential evolution
+pEA,Network pretraining
+IN,
+IS,"Single asset, multivariate (volatility, log returns, SMA, EMA, MACD)"
+IW,5
+OW,"1 - -4, 3 - -2, 7 - 2, 15 - 10, 30 - 25"
+SFP,FALSE
+EM,"ME, MAE, RMSE"
+ref,"Bisoi, 2015 \cite{bisoi_prediction_2015}"
+PO,"NIFTY, RIL"

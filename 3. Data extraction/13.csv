@@ -1,0 +1,37 @@
+Title,"Determining the relationship between speculative activity and crude oil price volatility, using artificial neural networks"
+Authors,"Saqib Khan, Rene Mayorga, Hamed Shafiee Hasanabadi"
+Year,2017
+Journal,International Conference on Information and Communication Technologies
+Aim,Study the relationship between speculative activity and volatility using ANNs
+Main methods,"Feed forward NN, and radial basis NN."
+Benchmark methods,GARCH
+Method overview,"Starting with a feature set of 10 (S&P value weighted return, S&P equal weighted return, S&P index, weekly future price of crude oil, net T-value index on crude oil futures contracts, implied volatility of crude oil price, 6 month rolling volatility of log daily returns of S&P index, average last 6 month returns crude oil future price, 1 month lagged T-value, volatility of T-value). Here, the feature set was optimised through correlation and regression (filtering method) to reduce the set to 5 features. The NN was then trained with only historical volatility as the features"
+Method complexity,Feed forward NN: 5-3-1. Radial basis NN: 5-315-1
+Volatility definition,Standard deviation of crude oil weekly returns (log spot price differences) for the last 6 months
+Data summary,"Weekly crude oil futures price data from Jan 4th 1995 to May 26th 2004. The closest to maturity future price is considered as spot crude oil price. Additionally, S&P index, S&P value weighted returns, S&P equal weighted returns. Also, commitment of traders data (feature that represents speculative activity)"
+System in,"S&P index, volatility of T value, weekly crude oil future prices, average of last 6 months returns crude oil future price, implied volatility of crude oil price"
+System out,6 month rolling volatility of log weekly returns of nearest to maturity crude oil prices
+Results summary,The speculatuve activity feature did not seem to increase forecast performance of NN. Both NN performed better than GARCH. RBFNN did better than FFNN. The ANNs trained on just historical volatility performed better
+Performance metric,"MAE, MSE, RMSE"
+Evaluation method,Training set: Jan 1995 to Feb 2002. Test set: March 20th 2002 to May 26th 2004
+Open source?,na
+Code language?,na
+Interesting notes,"Some have found that speculative activity increases volatility, whilst some others have found the opposite, a reduction of speculative activity.
+Note that T-value is some measure of speculative activity"
+"Subjective quality (bad, okay, good)","Bad, nothing really special"
+Insights/my takeaway,"Not many papers have performed repetitions for their results, which is a problem that I should not succumb to for my future works."
+VD,Historical volatility
+MT,Pure
+NT,MLP
+HT,na
+PT,na
+EA,na
+pEA,na
+IN,
+IS,"Multi-asset, multivariate (S&P500 price, volatility of T value, weekly crude oil future prices, average of last 6 months returns crude oil future price, implied volatility of crude oil price)"
+IW,1
+OW,1 - -126 (prev 6 months)
+SFP,unsure
+EM,"MAE, MSE, RMSE"
+ref,"Khan, 2017 \cite{khan_determining_2017}"
+PO,"Crude oil (futures), S&P500"

@@ -1,0 +1,37 @@
+Title,"Estimation and forecasting of volatility using ARIMA, ARFIMA, and neural network based techniques"
+Authors,"Hemanth Kumar P., S. Basavaraj Patil"
+Year,2015
+Journal,"Souvenir of the 2015 IEEE International Advance Computing Conference, IACC 2015"
+Aim,To determine the lowest error combination of volatility proxy and method
+Main methods,"ARIMA, ARFIMA, NN"
+Benchmark methods,As above
+Method overview,"Feed forward NN, inputs with lag"
+Method complexity,Single layer
+Volatility definition,"All the proxies mentioned: close to close, Garman.klass, Parkinson, Roger, Yang."
+Data summary,"S&P500 from March 3rd 2005 to March 3rd 2015. End of day prices, open close high low volumn and adjusted closing price, total of 2517 samples."
+System in,Historical volatility (from the past 30 days)
+System out,"Volatility proxy, forecasted 10 days in advance"
+Results summary,"Parkinson better with ARFIMA, GarmanKlass better with ARIMA and NN. Overall, GarmanKlass and ARIMA had the lowest error"
+Performance metric,"ME, RMSE, MAE, MPE, MAPE, MASE, ACF1"
+Evaluation method,na
+Open source?,na
+Code language?,na
+Interesting notes,"Previously, a simple close to close method was used to proxy volatility. Now, there are so many more methods which have shown lower errors in forecasting, such as Garman.klass, Parkinson, Roger, Yang. However, lower error does not really mean much, a specific proxy could have arbitrarily low error if scaled so.
+This paper mentions implied volatility a lot, but it is actually not implied volatility, just future predicted volatility"
+"Subjective quality (bad, okay, good)","Bad. The methods in this paper are not fully described, e.g. the actual inputs, outputs, evaluation method, etc..."
+Insights/my takeaway,
+VD,"Historical volatility, other (range based)"
+MT,Pure
+NT,MLP
+HT,na
+PT,na
+EA,na
+pEA,na
+IN,
+IS,"Single asset, univariate (volatility)"
+IW,unsure
+OW,1 - 10
+SFP,TRUE
+EM,"ME, RMSE, MAE, MPE, MAPE, MASE, ACF1"
+ref,"Kumar, 2015 \cite{kumar_p_estimation_2015}"
+PO,S&P500

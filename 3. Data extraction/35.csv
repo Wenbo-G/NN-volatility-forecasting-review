@@ -1,0 +1,36 @@
+Title,Volatility prediction model for option pricing: a soft computing approach
+Authors,"Vijayalaxmi Harish, Chandrashekara S Adiga"
+Year,2015
+Journal,International Journal of Soft Computing
+Aim,To develop a NN model whih can be used to predict the volatility of S&P500 
+Main methods,MLP
+Benchmark methods,none
+Method overview,"Some form of hyperparameter search: ""Network is trained multiple times with different number of neurons and delays till the performance is optimum"". They mention input normalisation too, but it is unclear if they do it."
+Method complexity,"1 hidden layer, default is 10 neurons"
+Volatility definition,Population standard deviation of log returns of a stock
+Data summary,"Daily closing price of S&P500, transformed into log returns"
+System in,"Default delay is 2, so I think it is the previous 2 volatilities and prices"
+System out,One step ahead volatility forecast
+Results summary,"Overall regression coefficient is 0.9992. They don't mention how many neurons of delays is actually used, just default"
+Performance metric,Regression coefficient (R2 I think)
+Evaluation method,"70% training (2801 points), 15% validation (600 points), 15% testing (600 points). Validation use to stop training early"
+Open source?,na
+Code language?,MATLAB
+Interesting notes,
+"Subjective quality (bad, okay, good)",Bad. Kind of just a basic tutorial with no real results
+Insights/my takeaway,
+VD,Historical volatility
+MT,Pure
+NT,MLP
+HT,na
+PT,na
+EA,na
+pEA,na
+IN,
+IS,"Single asset, multivariate (log returns, volatility)"
+IW,Default 2
+OW,1 - unsure
+SFP,unsure
+EM,R2
+ref,"Harish, 2015 \cite{harish_volatility_2015}"
+PO,S&P500
