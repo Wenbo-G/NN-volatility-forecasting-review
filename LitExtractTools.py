@@ -6,11 +6,11 @@ import re
 def loadLitExtract(x):
     """Loads the .csv file which has the extracted data from a piece of literature
     
-        Parameters:
-            x (int or string): the reference to the .csv file
-            
-        Returns:
-            data (DataFrame): the pd.DataFrame which holds the information from the .csv file
+    Parameters:
+        x (int or string): the reference to the .csv file
+        
+    Returns:
+        DataFrame: the pd.DataFrame which holds the information from the .csv file
     """
     path = '3. Data extraction/' + str(x) + '.csv' if isinstance(x,int) else x
     data = pd.read_csv(path,index_col=0,names=['Field','Content']).fillna('')
@@ -18,13 +18,13 @@ def loadLitExtract(x):
     return data
     
 def checkContent(x):
-    """Checks one file for missing values.
+    """Checks one file for missing values, allowing some in certain columns
     
-        Parameters:
-            x (int or string or pd.DataFrame): the reference to the .csv file
-            
-        Returns:
-            passed (bool): True if passed, False if failed
+    Parameters:
+        x (int or string or pd.DataFrame): the reference to the .csv file
+        
+    Returns:
+        bool: True if passed, False if failed
     """
     data = x if isinstance(x,pd.DataFrame) else loadLitExtract(x)
     cols = data.index
@@ -41,12 +41,9 @@ def checkContent(x):
 
 def loadAllExtracted():
     """Loads all files in the Data extraction folder.
-    
-        Parameters:
-            none
             
-        Returns:
-            data (list): list of all DataFrames from loadLitExtract
+    Returns:
+        list: list of all DataFrames from loadLitExtract
     """
     a = os.scandir('3. Data extraction/')
     data = []
@@ -57,12 +54,9 @@ def loadAllExtracted():
             
 def checkAllContent():
     """Checks all files in the Data extraction folder for missing values.
-    
-        Parameters:
-            none
-            
-        Returns:
-            passed (bool): True if passed, False if failed
+        
+    Returns:
+        bool: True if passed, False if failed
     """
     data = loadAllExtracted()
     passeds = True
@@ -76,12 +70,12 @@ def checkAllContent():
 def retrieveAll(papers,field):
     """Retrieves the content of a field from all papers.
     
-        Parameters:
-            papers (list of DataFrame): all papers
-            field (string): what field to retrieve
-            
-        Returns:
-            items (list): content from field of all papers
+    Parameters:
+        papers (list of DataFrame): all papers
+        field (string): what field to retrieve
+        
+    Returns:
+        list: content from field of all papers
     """
     items = []
     for paper in papers:
@@ -93,12 +87,12 @@ def retrieveAll(papers,field):
 def inCounter(term,array):
     """Counts number of appearances of term in the elements of array (case insensitive), can not count multiple times for one element of array. 
     
-        Parameters:
-            term (string): The term to count for
-            array (array-like): The array to search over
-            
-        Returns:
-            counter (int): Number of appearances
+    Parameters:
+        term (string): The term to count for
+        array (array-like): The array to search over
+        
+    Returns:
+        int: Number of appearances
     """
     condition = lambda x,y: x.lower() in y.lower()
     return counter(term,array,condition,remove=False)
@@ -106,12 +100,12 @@ def inCounter(term,array):
 def equalCounter(term,array):
     """Counts number of times term equals the element in the array (case insensitive).
     
-        Parameters:
-            term (string): The term to count for
-            array (array-like): The array to search over
-            
-        Returns:
-            counter (int): Number of appearances
+    Parameters:
+        term (string): The term to count for
+        array (array-like): The array to search over
+        
+    Returns:
+        int: Number of appearances
     """
     condition = lambda x,y: x.lower() == y.lower()
     return counter(term,array,condition,remove=False)
@@ -120,12 +114,12 @@ def inCounter_withRemoval(term,array):
     """Counts number of appearances of term in the elements of array (case insensitive), can not count multiple times for one element of array. 
     Also removes all elements in array with that term.
     
-        Parameters:
-            term (string): The term to count for
-            array (array-like): The array to search over
-            
-        Returns:
-            counter (int): Number of appearances
+    Parameters:
+        term (string): The term to count for
+        array (array-like): The array to search over
+        
+    Returns:
+        int: Number of appearances
     """
     condition = lambda x,y: x.lower() in y.lower()
     return counter(term,array,condition,remove=True)
@@ -134,12 +128,12 @@ def equalCounter_withRemoval(term,array):
     """Counts number of times term equals the element in the array (case insensitive). 
     Also removes all elements in array equal to that term.
     
-        Parameters:
-            term (string): The term to count for
-            array (array-like): The array to search over
-            
-        Returns:
-            counter (int): Number of appearances
+    Parameters:
+        term (string): The term to count for
+        array (array-like): The array to search over
+        
+    Returns:
+        int: Number of appearances
     """
     condition = lambda x,y: x.lower() == y.lower()
     return counter(term,array,condition,remove=True)
@@ -148,14 +142,14 @@ def equalCounter_withRemoval(term,array):
 def counter(term,array,condition,remove):
     """Counts number of times condition is met for term in array.
     
-        Parameters:
-            term (string): The term to count for
-            array (array-like): The array to search over
-            condition (function): The condition to count if met
-            remove (bool): to remove elements that match the condition or not
-            
-        Returns:
-            counter (int): Number of appearances
+    Parameters:
+        term (string): The term to count for.
+        array (array-like): The array to search over.
+        condition (function): The condition to count if met.
+        remove (bool): to remove elements that match the condition or not.
+        
+    Returns:
+        int: Number of appearances
     """
     if remove:
         counter = len(array)
@@ -169,11 +163,11 @@ def counter(term,array,condition,remove):
 def removeBrackets(x):
     """Removes all brackets and content inside brackets
     
-        Parameters:
-            x (string): String to have brackets and contents removed from
-            
-        Returns:
-            (string): The string without brackets and its contents
+    Parameters:
+        x (string): String to have brackets and contents removed from
+        
+    Returns:
+        str: The string without brackets and its contents
     """
     return re.sub("[\(\[].*?[\)\]]", "", x)
 
@@ -181,36 +175,36 @@ def removeBrackets(x):
 def find_replace(x,y,z):
     """Replaces all appearances of string x for string y in string z
     
-        Parameters:
-            x (string): String to be replaced
-            y (string): String to replace with
-            z (string): String in which x should be replaced with y
-            
-        Returns:
-            (string): The replaced string
+    Parameters:
+        x (string): String to be replaced
+        y (string): String to replace with
+        z (string): String in which x should be replaced with y
+        
+    Returns:
+        str: The replaced string
     """
     return z.replace(x,y)
 
 def replace_na(y,z):
     """Replaces all appearances of 'na' for string y in string z
     
-        Parameters:
-            y (string): String to replace with
-            z (string): String in which x should be replaced with y
-            
-        Returns:
-            (string): The replaced string
+    Parameters:
+        y (string): String to replace with
+        z (string): String in which x should be replaced with y
+        
+    Returns:
+        str: The replaced string
     """
     return find_replace('na',y,z)
 
 def fixAmpersand(z):
     """Replaces all appearances of '&' for '\\&' in string z, for the overleaf
     
-        Parameters:
-            z (string): String in which x should be replaced with y
-            
-        Returns:
-            (string): The replaced string
+    Parameters:
+        z (string): String in which x should be replaced with y
+        
+    Returns:
+        str: The replaced string
     """
     return find_replace('&','\\&',z)
 
