@@ -7,4 +7,4 @@ In here you will find the list of papers included in the literature review, all 
 If details are missing or you wish to see more, please email the corresponding author: wenbo.ge@anu.edu.au
 
 ### Referencing
-Please reference the paper if using the code or results from this repo. The bibtex entry is as follows *Will update when published
+Please reference the paper if using the code or results from this repo. The bibtex entry is as follows *Will update when published*
